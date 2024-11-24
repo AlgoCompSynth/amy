@@ -1,0 +1,1526 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Shore Pine Sound Systems" />
+  <title>AMY Readme</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">AMY Readme</h1>
+<p class="author">Shore Pine Sound Systems</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#amy---a-high-performance-fixed-point-music-synthesizer-library-for-microcontrollers"
+id="toc-amy---a-high-performance-fixed-point-music-synthesizer-library-for-microcontrollers">AMY
+- A high-performance fixed-point Music synthesizer librarY for
+microcontrollers</a>
+<ul>
+<li><a href="#using-amy-in-arduino" id="toc-using-amy-in-arduino">Using
+AMY in Arduino</a></li>
+<li><a href="#using-amy-in-python-on-any-platform"
+id="toc-using-amy-in-python-on-any-platform">Using AMY in Python on any
+platform</a></li>
+<li><a href="#using-amy-on-the-web" id="toc-using-amy-on-the-web">Using
+AMY on the web</a></li>
+<li><a href="#using-amy-in-any-other-software"
+id="toc-using-amy-in-any-other-software">Using AMY in any other
+software</a></li>
+</ul></li>
+<li><a href="#using-amy" id="toc-using-amy">Using AMY</a></li>
+<li><a href="#wire-protocol" id="toc-wire-protocol">Wire
+protocol</a></li>
+<li><a href="#synthesizer-details"
+id="toc-synthesizer-details">Synthesizer details</a>
+<ul>
+<li><a href="#amys-sequencer-and-timestamps"
+id="toc-amys-sequencer-and-timestamps">AMY’s sequencer and
+timestamps</a>
+<ul>
+<li><a href="#the-sequencer" id="toc-the-sequencer">The
+sequencer</a></li>
+</ul></li>
+<li><a href="#examples" id="toc-examples">Examples</a>
+<ul>
+<li><a href="#controlcoefficients"
+id="toc-controlcoefficients">ControlCoefficients</a></li>
+</ul></li>
+<li><a href="#core-oscillators" id="toc-core-oscillators">Core
+oscillators</a></li>
+<li><a href="#lfos-modulators" id="toc-lfos-modulators">LFOs &amp;
+modulators</a></li>
+<li><a href="#filters" id="toc-filters">Filters</a></li>
+<li><a href="#eq-volume" id="toc-eq-volume">EQ &amp; Volume</a></li>
+<li><a href="#envelope-generators" id="toc-envelope-generators">Envelope
+Generators</a></li>
+<li><a href="#audio-input-and-effects"
+id="toc-audio-input-and-effects">Audio input and effects</a></li>
+<li><a href="#fm-algo-type" id="toc-fm-algo-type">FM &amp; ALGO
+type</a></li>
+<li><a href="#partials" id="toc-partials">Partials</a></li>
+<li><a href="#build-your-own-partials"
+id="toc-build-your-own-partials">Build-your-own Partials</a></li>
+<li><a href="#pcm" id="toc-pcm">PCM</a></li>
+<li><a href="#sampler-aka-memory-pcm"
+id="toc-sampler-aka-memory-pcm">Sampler (aka Memory PCM)</a></li>
+<li><a href="#voices-and-patches-dx7-juno-6-custom-support"
+id="toc-voices-and-patches-dx7-juno-6-custom-support"><a name="voices_and_patches"></a>Voices
+and patches (DX7, Juno-6, custom) support</a></li>
+<li><a href="#developer-zone" id="toc-developer-zone">Developer zone</a>
+<ul>
+<li><a href="#generate-header-files-for-patches-and-luts"
+id="toc-generate-header-files-for-patches-and-luts">Generate header
+files for patches and LUTs</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="amy---a-high-performance-fixed-point-music-synthesizer-library-for-microcontrollers">AMY
+- A high-performance fixed-point Music synthesizer librarY for
+microcontrollers</h1>
+<p>AMY is a fast, small and accurate music synthesizer library written
+in C with Python and Arduino bindings that deals with combinations of
+many oscillators very well. It can easily be embedded into almost any
+program, architecture or microcontroller. We’ve run AMY on <a
+href="https://shorepine.github.io/amy/">the web</a>, Mac, Linux, ESP32,
+ESP32S3 and ESP32P4, Teensy 3.6, Teensy 4.1, the Raspberry Pi, the Pi
+Pico RP2040, the Pi Pico 2 RP2530, iOS devices, the Electro-Smith Daisy
+(ARM Cortex M7), and more to come. It is highly optimized for polyphony
+and poly-timbral operation on even the lowest power and constrained RAM
+microcontroller but can scale to as many cores as you want.</p>
+<p>It can be used as a very good analog-type synthesizer (Juno-6 style)
+a FM synthesizer (DX7 style), a partial breakpoint synthesizer (Alles
+machine or Atari AMY), a sampler (where you load in your own PCM data),
+a drum machine (808-style PCM samples are included), or as a lower level
+toolkit to make your own combinations of oscillators, filters, LFOs and
+effects.</p>
+<p>AMY powers the multi-speaker mesh synthesizer <a
+href="https://github.com/shorepine/alles">Alles</a>, as well as the <a
+href="https://github.com/shorepine/tulipcc">Tulip Creative Computer</a>.
+Let us know if you use AMY for your own projects and we’ll add it
+here!</p>
+<p>AMY was built by <a
+href="https://research.google/people/DanEllis/">DAn Ellis</a> and <a
+href="https://notes.variogram.com">Brian Whitman</a>, and would love
+your contributions.</p>
+<p><a href="https://discord.gg/TzBFkUb8pG"><img
+src="https://raw.githubusercontent.com/shorepine/tulipcc/main/docs/pics/shorepine100.png"
+alt="shore pine sound systems discord" /> <strong>Chat about AMY on our
+Discord!</strong></a></p>
+<p>It supports</p>
+<ul>
+<li>An arbitrary number (compile-time option) of band-limited
+oscillators, each with adjustable frequency and amplitude:
+<ul>
+<li>pulse (+ adjustable duty cycle)</li>
+<li>sine</li>
+<li>saw (up and down)</li>
+<li>triangle</li>
+<li>noise</li>
+<li>PCM, reading from a baked-in buffer of percussive and misc samples,
+or by loading samples with looping and base midi note</li>
+<li>karplus-strong string with adjustable feedback</li>
+<li>Stereo audio input can be used as an oscillator for real time audio
+effects</li>
+<li>An operator / algorithm-based frequency modulation (FM) synth</li>
+</ul></li>
+<li>Biquad low-pass, bandpass or hi-pass filters with cutoff and
+resonance, can be assigned to any oscillator</li>
+<li>Reverb, echo and chorus effects, set globally</li>
+<li>Stereo pan or mono operation</li>
+<li>An additive partial synthesizer with an analysis front end to play
+back long strings of breakpoint-based sine waves</li>
+<li>Oscillators can be specified by frequency in floating point or midi
+note</li>
+<li>Each oscillator has 2 envelope generators, which can modify any
+combination of amplitude, frequency, PWM duty, filter cutoff, or pan
+over time</li>
+<li>Each oscillator can also act as an modulator to modify any
+combination of parameters of another oscillator, for example, a bass
+drum can be indicated via a half phase sine wave at 0.25Hz modulating
+the frequency of another sine wave.</li>
+<li>Control of overall gain and 3-band EQ</li>
+<li>Built in patches for PCM, DX7, Juno and partials</li>
+<li>A front end for Juno-6 patches and conversion setup commands</li>
+<li>Built-in clock and pattern sequencer</li>
+<li>Can use multi-core (including microcontrollers) for rendering if
+available</li>
+</ul>
+<p>The FM synth provides a Python library, <a
+href="https://github.com/shorepine/amy/blob/main/fm.py"><code>fm.py</code></a>
+that can convert any DX7 patch into AMY setup commands, and also a
+pure-Python implementation of the AMY FM synthesizer in <a
+href="https://github.com/shorepine/amy/blob/main/dx7_simulator.py"><code>dx7_simulator.py</code></a>.</p>
+<p>The partial tone synthesizer provides <a
+href="https://github.com/shorepine/amy/blob/main/partials.py"><code>partials.py</code></a>,
+where you can model the partials of any arbitrary audio into AMY setup
+commands for live partial playback of hundreds of oscillators.</p>
+<p>The Juno-6 emulation is in <a
+href="https://github.com/shorepine/amy/blob/main/juno.py"><code>juno.py</code></a>
+and can read in Juno-6 SYSEX patches and convert them into AMY commands
+and generate patches.</p>
+<h2 id="using-amy-in-arduino">Using AMY in Arduino</h2>
+<p>Copy this repository to your <code>Arduino/libraries</code> folder as
+<code>Arduino/libraries/amy</code>, and
+<code>#include &lt;AMY-Arduino.h&gt;</code>. There are examples for the
+Pi Pico, ESP32 (and variants), and Teensy (works on 4.X and 3.6) Use the
+File-&gt;Examples-&gt;AMY Synthesizer menu to find them.</p>
+<p>The examples rely on the following board packages and libraries: *
+RP2040 / Pi Pico: <a
+href="https://arduino-pico.readthedocs.io/en/latest/install.html#installing-via-arduino-boards-manager"><code>arduino-pico</code></a>
+* Teensy: <a
+href="https://www.pjrc.com/teensy/td_download.html"><code>teensyduino</code></a>
+* ESP32/ESP32-S3/etc: <a
+href="https://espressif-docs.readthedocs-hosted.com/projects/arduino-esp32/en/latest/installing.html"><code>arduino-esp32</code></a>
+- use a 2.0.14+ version when installing * The USB MIDI example requires
+the <a
+href="https://www.arduino.cc/reference/en/libraries/midi-library/">MIDI
+Library</a></p>
+<p>You can use both cores of supported chips (RP2040 or ESP32) for more
+oscillators and voices. We provide Arduino examples for the Arduino
+ESP32 in multicore, and a <code>pico-sdk</code> example for the RP2040
+that renders in multicore. If you really want to push the chips to the
+limit, we recommend using native C code using the <code>pico-sdk</code>
+or <code>ESP-IDF</code>.</p>
+<p>We have a simple <a
+href="https://github.com/shorepine/amy_dual_core_esp32">dual core
+ESP-IDF example available</a> or you can see <a
+href="https://github.com/shorepine/alles">Alles</a>.</p>
+<h2 id="using-amy-in-python-on-any-platform">Using AMY in Python on any
+platform</h2>
+<p>You can <code>import amy</code> in Python and have it render either
+out to your speakers or to a buffer of samples you can process on your
+own. To install the <code>libamy</code> library, run
+<code>cd src; pip install .</code>. You can also run
+<code>make test</code> to install the library and run a series of
+tests.</p>
+<h2 id="using-amy-on-the-web">Using AMY on the web</h2>
+<p>We provide an <code>emscripten</code> port of AMY that runs in
+javascript. <a href="https://shorepine.github.io/amy/">See the AMY web
+demo</a>. To build for the web, use <code>make web</code>. It will
+generate <code>amy.js</code> in <code>src/www</code>.</p>
+<h2 id="using-amy-in-any-other-software">Using AMY in any other
+software</h2>
+<p>To use AMY in your own software, simply copy the .c and .h files in
+<code>src</code> to your program and compile them. No other libraries
+should be required to synthesize audio in AMY. You’ll want to make sure
+the configuration in <code>amy_config.h</code> is set up for your
+application / hardware.</p>
+<p>To run a simple C example on many platforms:</p>
+<pre><code>make
+./amy-example # you should hear tones out your default speaker, use ./amy-example -h for options</code></pre>
+<h1 id="using-amy">Using AMY</h1>
+<blockquote>
+<p>This section introduces AMY starting from the primitive oscillators.
+If your interest is mainly in using the preset patches to emulate a full
+synthesizer, you might skip to <a href="#voices_and_patches">Voices and
+patches</a> section.</p>
+</blockquote>
+<p>AMY can be controlled using its wire protocol or by fillng its data
+structures directly. It’s up to what’s easier for you and your
+application.</p>
+<p>In Python, rendering to a buffer of samples, using the high level
+API:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> amy</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> m <span class="op">=</span> amy.message(voices<span class="op">=</span><span class="st">&#39;0&#39;</span>, load_patch<span class="op">=</span><span class="dv">130</span>, note<span class="op">=</span><span class="dv">50</span>, vel<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">print</span>(m) <span class="co"># Show the wire protocol message</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>v0n50l1K130r0Z</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> amy.send_raw(m)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="co"># This plays immediately on Tulip, but if you&#39;re running Amy in regular Python, you can get the waveform from render:</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> audio <span class="op">=</span> amy.render(<span class="fl">5.0</span>)</span></code></pre></div>
+<p>You can also start a thread playing live audio:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> amy</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> amy.live() <span class="co"># can optinally pass in playback and capture audio device IDs, amy.live(2, 1) </span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> amy.send(voices<span class="op">=</span><span class="st">&#39;0&#39;</span>, load_patch<span class="op">=</span><span class="dv">130</span>, note<span class="op">=</span><span class="dv">50</span>, vel<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> amy.stop()</span></code></pre></div>
+<p>In C, using the high level structures directly;</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&quot;amy.h&quot;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> bleep<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">struct</span> event e <span class="op">=</span> amy_default_event<span class="op">();</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int32_t</span> start <span class="op">=</span> amy_sysclock<span class="op">();</span>   <span class="co">// Right now..</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    e<span class="op">.</span>time <span class="op">=</span> start<span class="op">;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    e<span class="op">.</span>osc <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    e<span class="op">.</span>wave <span class="op">=</span> SINE<span class="op">;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    e<span class="op">.</span>freq_coefs<span class="op">[</span>COEF_CONST<span class="op">]</span> <span class="op">=</span> <span class="dv">220</span><span class="op">;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    e<span class="op">.</span>velocity <span class="op">=</span> <span class="dv">1</span><span class="op">;</span>                   <span class="co">// start a 220 Hz sine.</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    amy_add_event<span class="op">(</span>e<span class="op">);</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    e<span class="op">.</span>time <span class="op">=</span> start <span class="op">+</span> <span class="dv">150</span><span class="op">;</span>             <span class="co">// in 150 ms..</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    e<span class="op">.</span>freq_coefs<span class="op">[</span>COEF_CONST<span class="op">]</span> <span class="op">=</span> <span class="dv">440</span><span class="op">;</span>   <span class="co">// change to 440 Hz.</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    amy_add_event<span class="op">(</span>e<span class="op">);</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    e<span class="op">.</span>time <span class="op">=</span> sysclock <span class="op">+</span> <span class="dv">300</span><span class="op">;</span>          <span class="co">// in  300 ms..</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    e<span class="op">.</span>velocity <span class="op">=</span> <span class="dv">0</span><span class="op">;</span>                   <span class="co">// note off.</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    amy_add_event<span class="op">(</span>e<span class="op">);</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    amy_start<span class="op">(</span><span class="co">/* cores= */</span> <span class="dv">1</span><span class="op">,</span> <span class="co">/* reverb= */</span> <span class="dv">0</span><span class="op">,</span> <span class="co">/* chorus= */</span> <span class="dv">0</span><span class="op">,</span>  <span class="co">/* echo */</span> <span class="dv">1</span><span class="op">);</span> <span class="co">// initializes amy </span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    amy_live_start<span class="op">();</span> <span class="co">// render live audio</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    bleep<span class="op">();</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Or in C, sending the wire protocol directly:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&quot;amy.h&quot;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    amy_start<span class="op">(</span><span class="co">/* cores= */</span> <span class="dv">1</span><span class="op">,</span> <span class="co">/* reverb= */</span> <span class="dv">0</span><span class="op">,</span> <span class="co">/* chorus= */</span> <span class="dv">0</span><span class="op">,</span> <span class="co">/* echo */</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    amy_live_start<span class="op">();</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    amy_play_message<span class="op">(</span><span class="st">&quot;v0n50l1K130r0Z&quot;</span><span class="op">);</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>If you want to receive buffers of samples, or have more control over
+the rendering pipeline to support multi-core, instead of using
+<code>amy_live_start()</code>:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&quot;amy.h&quot;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>amy_start<span class="op">(</span><span class="co">/* cores= */</span> <span class="dv">2</span><span class="op">,</span> <span class="co">/* reverb= */</span> <span class="dv">1</span><span class="op">,</span> <span class="co">/* chorus= */</span> <span class="dv">1</span><span class="op">,</span> <span class="co">/* echo */</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="op">...</span> <span class="op">{</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">// For each sample block:</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    amy_prepare_buffer<span class="op">();</span> <span class="co">// prepare to render this block</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    amy_render<span class="op">(</span><span class="dv">0</span><span class="op">,</span> OSCS<span class="op">/</span><span class="dv">2</span><span class="op">,</span> <span class="dv">0</span><span class="op">);</span> <span class="co">// render oscillators 0 - OSCS/2 on core 0</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">// on the other core... </span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    amy_render<span class="op">(</span>OSCS<span class="op">/</span><span class="dv">2</span><span class="op">,</span> OSCS<span class="op">,</span> <span class="dv">1</span><span class="op">);</span> <span class="co">// render oscillators OSCS/2-OSCS on core 1</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">// when they are both done..</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int16_t</span> <span class="op">*</span> samples <span class="op">=</span> amy_fill_buffer<span class="op">();</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">// do what you want with samples</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="op">...</span> <span class="op">}</span></span></code></pre></div>
+<p>On storage constrained devices, you may want to limit the amount of
+PCM samples we ship with AMY. To do this, include a smaller set after
+including <code>amy.h</code>, like:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&quot;amy.h&quot;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&quot;pcm_tiny.h&quot;</span><span class="pp"> </span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">// or, #include &quot;pcm_small.h&quot;</span></span></code></pre></div>
+<h1 id="wire-protocol">Wire protocol</h1>
+<p>AMY’s wire protocol is a series of numbers delimited by ascii
+characters that define all possible parameters of an oscillator. This is
+a design decision intended to make using AMY from any sort of
+environment as easy as possible, with no data structure or parsing
+overhead on the client. It’s also readable and compact, far more
+expressive than MIDI and can be sent over network links, UARTs, or as
+arguments to functions or commands. We’ve used AMY over multicast UDP,
+over Javascript, in Max/MSP, in Python, C, Micropython and many
+more!</p>
+<p>AMY accepts commands in ASCII, like so:</p>
+<pre><code>v0w4f440.0l1.0Z</code></pre>
+<p>This example controls osc 0 (<code>v0</code>), sets its waveform to
+triangle (<code>w4</code>), sets its frequency to 4400 Hz
+(<code>f440.0</code>), and velocity (i.e. amplitude) to 1
+(<code>l1.0</code>). The final <code>Z</code> is a terminator indicating
+the message is complete.</p>
+<p>Here’s the full list:</p>
+<table>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 16%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Code</th>
+<th>Python</th>
+<th>Type-range</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>a</code></td>
+<td><code>amp</code></td>
+<td>float[,float…]</td>
+<td>Control the amplitude of a note; a set of ControlCoefficients.
+Default is 0,0,1,1 (i.e. the amplitude comes from the note velocity
+multiplied by Envelope Generator 0.)</td>
+</tr>
+<tr class="even">
+<td><code>A</code></td>
+<td><code>bp0</code></td>
+<td>string</td>
+<td>Envelope Generator 0’s comma-separated breakpoint pairs of time(ms)
+and level, e.g. <code>100,0.5,50,0.25,200,0</code>. The last pair
+triggers on note off (release)</td>
+</tr>
+<tr class="odd">
+<td><code>b</code></td>
+<td><code>feedback</code></td>
+<td>float 0-1</td>
+<td>Use for the ALGO synthesis type in FM or for karplus-strong, or to
+indicate PCM looping (0 off, &gt;0, on)</td>
+</tr>
+<tr class="even">
+<td><code>B</code></td>
+<td><code>bp1</code></td>
+<td>string</td>
+<td>Breakpoints for Envelope Generator 1. See bp0</td>
+</tr>
+<tr class="odd">
+<td><code>c</code></td>
+<td><code>chained_osc</code></td>
+<td>uint 0 to OSCS-1</td>
+<td>Chained oscillator. Note/velocity events to this oscillator will
+propagate to chained oscillators. VCF is run only for first osc in
+chain, but applies to all oscs in chain.</td>
+</tr>
+<tr class="even">
+<td><code>d</code></td>
+<td><code>duty</code></td>
+<td>float[,float…]</td>
+<td>Duty cycle for pulse wave, ControlCoefficients, defaults to 0.5</td>
+</tr>
+<tr class="odd">
+<td><code>D</code></td>
+<td><code>debug</code></td>
+<td>uint, 2-4</td>
+<td>2 shows queue sample, 3 shows oscillator data, 4 shows modified
+oscillator. Will interrupt audio!</td>
+</tr>
+<tr class="even">
+<td><code>f</code></td>
+<td><code>freq</code></td>
+<td>float[,float…]</td>
+<td>Frequency of oscillator, set of ControlCoefficients. Default is
+0,1,0,0,0,0,1 (from <code>note</code> pitch plus
+<code>pitch_bend</code>)</td>
+</tr>
+<tr class="odd">
+<td><code>F</code></td>
+<td><code>filter_freq</code></td>
+<td>float[,float…]</td>
+<td>Center/break frequency for variable filter, set of
+ControlCoefficients</td>
+</tr>
+<tr class="even">
+<td><code>G</code></td>
+<td><code>filter_type</code></td>
+<td>0-4</td>
+<td>Filter type: 0 = none (default.) 1 = lowpass, 2 = bandpass, 3 =
+highpass, 4 = double-order lowpass.</td>
+</tr>
+<tr class="odd">
+<td><code>H</code></td>
+<td><code>sequence</code></td>
+<td>int,int,int</td>
+<td>Tick offset, period, tag for sequencing</td>
+</tr>
+<tr class="even">
+<td><code>h</code></td>
+<td><code>reverb</code></td>
+<td>float[,float,float,float]</td>
+<td>Reverb parameters – level, liveness, damping, xover: Level is for
+output mix; liveness controls decay time, 1 = longest, default 0.85;
+damping is extra decay of high frequencies, default 0.5; xover is
+damping crossover frequency, default 3000 Hz.</td>
+</tr>
+<tr class="odd">
+<td><code>I</code></td>
+<td><code>ratio</code></td>
+<td>float</td>
+<td>For ALGO types, ratio of modulator frequency to base note frequency
+/ For the PARTIALS base note, ratio controls the speed of the
+playback</td>
+</tr>
+<tr class="even">
+<td><code>j</code></td>
+<td><code>tempo</code></td>
+<td>float</td>
+<td>The tempo (BPM, quarter notes) of the sequencer. Defaults to
+108.0.</td>
+</tr>
+<tr class="odd">
+<td><code>k</code></td>
+<td><code>chorus</code></td>
+<td>float[,float,float,float]</td>
+<td>Chorus parameters – level, delay, freq, depth: Level is for output
+mix (0 to turn off); delay is max in samples (320); freq is LFO rate in
+Hz (0.5); depth is proportion of max delay (0.5).</td>
+</tr>
+<tr class="even">
+<td><code>K</code></td>
+<td><code>load_patch</code></td>
+<td>uint 0-X</td>
+<td>Apply a saved patch (e.g. DX7 or Juno) to a specified voice (or
+starting at the selected oscillator).</td>
+</tr>
+<tr class="odd">
+<td><code>l</code></td>
+<td><code>vel</code></td>
+<td>float 0-1+</td>
+<td>Velocity: &gt; 0 to trigger note on, 0 to trigger note off</td>
+</tr>
+<tr class="even">
+<td><code>L</code></td>
+<td><code>mod_source</code></td>
+<td>0 to OSCS-1</td>
+<td>Which oscillator is used as an modulation/LFO source for this
+oscillator. Source oscillator will be silent.</td>
+</tr>
+<tr class="odd">
+<td><code>m</code></td>
+<td><code>portamento</code></td>
+<td>uint</td>
+<td>Time constant (in ms) for pitch changes when note is changed without
+intervening note-off. default 0 (immediate), 100 is good.</td>
+</tr>
+<tr class="even">
+<td><code>M</code></td>
+<td><code>echo</code></td>
+<td>float[,int,int,float,float]</td>
+<td>Echo parameters – level, delay_ms, max_delay_ms, feedback,
+filter_coef (-1 is HPF, 0 is flat, +1 is LPF).</td>
+</tr>
+<tr class="odd">
+<td><code>n</code></td>
+<td><code>note</code></td>
+<td>float, but typ. uint 0-127</td>
+<td>Midi note, sets frequency. Fractional Midi notes are allowed</td>
+</tr>
+<tr class="even">
+<td><code>N</code></td>
+<td><code>latency_ms</code></td>
+<td>uint</td>
+<td>Sets latency in ms. default 0 (see LATENCY)</td>
+</tr>
+<tr class="odd">
+<td><code>o</code></td>
+<td><code>algorithm</code></td>
+<td>uint 1-32</td>
+<td>DX7 FM algorithm to use for ALGO type</td>
+</tr>
+<tr class="even">
+<td><code>O</code></td>
+<td><code>algo_source</code></td>
+<td>string</td>
+<td>Which oscillators to use for the FM algorithm. list of six (starting
+with op 6), use empty for not used, e.g 0,1,2 or 0,1,2,,,</td>
+</tr>
+<tr class="odd">
+<td><code>p</code></td>
+<td><code>patch</code></td>
+<td>int</td>
+<td>Which predefined PCM or Partials patch to use, or number of partials
+if &lt; 0. (Juno/DX7 patches are different - see
+<code>load_patch</code>).</td>
+</tr>
+<tr class="even">
+<td><code>P</code></td>
+<td><code>phase</code></td>
+<td>float 0-1</td>
+<td>Where in the oscillator’s cycle to begin the waveform (also works on
+the PCM buffer). default 0</td>
+</tr>
+<tr class="odd">
+<td><code>Q</code></td>
+<td><code>pan</code></td>
+<td>float[,float…]</td>
+<td>Panning index ControlCoefficients (for stereo output), 0.0=left,
+1.0=right. default 0.5.</td>
+</tr>
+<tr class="even">
+<td><code>r</code></td>
+<td><code>voices</code></td>
+<td>int[,int]</td>
+<td>Comma separated list of voices to send message to, or load patch
+into.</td>
+</tr>
+<tr class="odd">
+<td><code>R</code></td>
+<td><code>resonance</code></td>
+<td>float</td>
+<td>Q factor of variable filter, 0.5-16.0. default 0.7</td>
+</tr>
+<tr class="even">
+<td><code>s</code></td>
+<td><code>pitch_bend</code></td>
+<td>float</td>
+<td>Sets the global pitch bend, by default modifying all note
+frequencies by (fractional) octaves up or down</td>
+</tr>
+<tr class="odd">
+<td><code>S</code></td>
+<td><code>reset</code></td>
+<td>uint</td>
+<td>Resets given oscillator. set to RESET_ALL_OSCS to reset all
+oscillators, gain and EQ. RESET_TIMEBASE resets the clock (immediately,
+ignoring <code>time</code>). RESET_AMY restarts AMY. RESET_SEQUENCER
+clears the sequencer.</td>
+</tr>
+<tr class="even">
+<td><code>t</code></td>
+<td><code>time</code></td>
+<td>uint</td>
+<td>Request playback time relative to some fixed start point on your
+host, in ms. Allows precise future scheduling.</td>
+</tr>
+<tr class="odd">
+<td><code>T</code></td>
+<td><code>eg0_type</code></td>
+<td>uint 0-3</td>
+<td>Type for Envelope Generator 0 - 0: Normal (RC-like) / 1: Linear / 2:
+DX7-style / 3: True exponential.</td>
+</tr>
+<tr class="even">
+<td><code>u</code></td>
+<td><code>store_patch</code></td>
+<td>number,string</td>
+<td>Store up to 32 patches in RAM with ID number (1024-1055) and AMY
+message after a comma. Must be sent alone</td>
+</tr>
+<tr class="odd">
+<td><code>v</code></td>
+<td><code>osc</code></td>
+<td>uint 0 to OSCS-1</td>
+<td>Which oscillator to control</td>
+</tr>
+<tr class="even">
+<td><code>V</code></td>
+<td><code>volume</code></td>
+<td>float 0-10</td>
+<td>Volume knob for entire synth, default 1.0</td>
+</tr>
+<tr class="odd">
+<td><code>w</code></td>
+<td><code>wave</code></td>
+<td>uint 0-15</td>
+<td>Waveform: [0=SINE, PULSE, SAW_DOWN, SAW_UP, TRIANGLE, NOISE, KS,
+PCM, ALGO, PARTIAL, PARTIALS, BYO_PARTIALS, AUDIO_IN0, AUDIO_IN1,
+CUSTOM, OFF]. default: 0/SINE</td>
+</tr>
+<tr class="even">
+<td><code>x</code></td>
+<td><code>eq</code></td>
+<td>float,float,float</td>
+<td>Equalization in dB low (~800Hz) / med (~2500Hz) / high (~7500Gz) -15
+to 15. 0 is off. default 0.</td>
+</tr>
+<tr class="odd">
+<td><code>X</code></td>
+<td><code>eg1_type</code></td>
+<td>uint 0-3</td>
+<td>Type for Envelope Generator 1 - 0: Normal (RC-like) / 1: Linear / 2:
+DX7-style / 3: True exponential.</td>
+</tr>
+<tr class="even">
+<td><code>z</code></td>
+<td><code>load_sample</code></td>
+<td>uint x 6</td>
+<td>Signal to start loading sample. patch, length(samples), samplerate,
+midinote, loopstart, loopend. All subsequent messages are base64 encoded
+WAVE-style frames of audio until <code>length</code> is reached. Set
+<code>patch</code> and <code>length=0</code> to unload a sample from
+RAM.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="synthesizer-details">Synthesizer details</h1>
+<p>We’ll use Python for showing examples of AMY. Maybe you’re running
+under <a href="https://github.com/shorepine/tulipcc">Tulip</a>, in which
+case AMY is already loaded, but if you’re running under standard Python,
+make sure you’ve installed <code>libamy</code> and are running a live
+AMY first by running <code>make test</code> and then:</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> import <span class="ex">amy</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> amy.live<span class="kw">()</span></span></code></pre></div>
+<h2 id="amys-sequencer-and-timestamps">AMY’s sequencer and
+timestamps</h2>
+<p>AMY is meant to either receive messages in real time or scheduled
+events in the future. It can be used as a sequencer where you can
+schedule notes to play in the future or on a divider of the clock.</p>
+<p>The scheduled events are very helpful in cases where you can’t rely
+on an accurate clock from the client, or don’t have one. The clock used
+internally by AMY is based on the audio samples being generated out the
+speakers, which should run at an accurate 44,100 times a second. This
+lets you do things like schedule fast moving parameter changes over
+short windows of time.</p>
+<p>For example, to play two notes, one a second after the first, you
+could do:</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">0</span>, note<span class="op">=</span><span class="dv">50</span>, vel<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>time.sleep(<span class="dv">1</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">0</span>, note<span class="op">=</span><span class="dv">52</span>, vel<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div>
+<p>But you’d be at the mercy of Python’s internal timing, or your OS. A
+more precise way is to send the messages at the same time, but to
+indicate the intended time of the playback:</p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> amy.millis()  <span class="co"># arbitrary start timestamp</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">0</span>, note<span class="op">=</span><span class="dv">50</span>, vel<span class="op">=</span><span class="dv">1</span>, time<span class="op">=</span>start)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">0</span>, note<span class="op">=</span><span class="dv">52</span>, vel<span class="op">=</span><span class="dv">1</span>, time<span class="op">=</span>start <span class="op">+</span> <span class="dv">1000</span>)</span></code></pre></div>
+<p>Both <code>amy.send()</code>s will return immediately, but you’ll
+hear the second note play precisely a second after the first. AMY uses
+this internal clock to schedule step changes in breakpoints as well.</p>
+<h3 id="the-sequencer">The sequencer</h3>
+<p>On supported platforms (right now any unix device with pthreads, and
+the ESP32 or related chip), AMY starts a sequencer that works on
+<code>ticks</code> from startup. You can reset the <code>ticks</code> to
+0 with an <code>amy.send(reset=amy.RESET_TIMEBASE)</code>. Note this
+will happen immediately, ignoring any <code>time</code> or
+<code>sequence</code>.</p>
+<p>Ticks run at 48 PPQ at the set tempo. The tempo defaults to 108 BPM.
+This means there are 108 quarter notes a minute, and
+<code>48 * 108 = 5184</code> ticks a minute, 86 ticks a second. The
+tempo can be changed with <code>amy.send(tempo=120)</code>.</p>
+<p>You can schedule an event to happen at a precise tick with
+<code>amy.send(... ,sequence="tick,period,tag")</code>.
+<code>tick</code> can be an absolute or offset tick number. If
+<code>period</code> is ommited or 0, <code>tick</code> is assumed to be
+absolute and once AMY reaches <code>tick</code>, the rest of your event
+will play and the saved event will be removed from memory. If an
+absolute <code>tick</code> is in the past, AMY will ignore it.</p>
+<p>You can schedule repeating events (like a step sequencer or drum
+machine) with <code>period</code>, which is the length of the sequence
+in ticks. For example a <code>period</code> of 48 with
+<code>ticks</code> omitted or 0 will trigger once every quarter note. A
+<code>period</code> of 24 will happen twice every quarter note. A
+<code>period</code> of 96 will happen every two quarter notes.
+<code>period</code> can be any whole number to allow for complex
+rhythms.</p>
+<p>For pattern sequencers like drum machines, you will also want to use
+<code>tick</code> alongisde <code>period</code>. If both are given and
+nonzero, <code>tick</code> is assumed to be an offset on the
+<code>period</code>. For example, for a 16-step drum machine pattern
+running on eighth notes (PPQ/2), you would use a <code>period</code> of
+<code>16 * 24 = 384</code>. The first slot of the drum machine would
+have a <code>tick</code> of 0, the 2nd would have a <code>tick</code>
+offset of 24, and so on.</p>
+<p><code>tag</code> should be given, and will be <code>0</code> if not.
+You should set <code>tag</code> to a random or incrementing number in
+your code that you can refer to later. <code>tag</code> allows you to
+replace or delete the event once scheduled.</p>
+<p>If you are including AMY in a program, you can set the hook
+<code>void (*amy_external_sequencer_hook)(uint32_t)</code> to any
+function. This will be called at every tick with the current tick number
+as an argument.</p>
+<p>Sequencer examples:</p>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">2</span>, vel<span class="op">=</span><span class="dv">1</span>, wave<span class="op">=</span>amy.PCM, patch<span class="op">=</span><span class="dv">2</span>, sequence<span class="op">=</span><span class="st">&quot;1000,,3&quot;</span>) <span class="co"># play a PCM drum at absolute tick 1000 </span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">0</span>, vel<span class="op">=</span><span class="dv">1</span>, wave<span class="op">=</span>amy.PCM, patch<span class="op">=</span><span class="dv">0</span>, sequence<span class="op">=</span><span class="st">&quot;,24,1&quot;</span>) <span class="co"># play a PCM drum every eighth note.</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">1</span>, vel<span class="op">=</span><span class="dv">1</span>, wave<span class="op">=</span>amy.PCM, patch<span class="op">=</span><span class="dv">1</span>, sequence<span class="op">=</span><span class="st">&quot;,48,2&quot;</span>) <span class="co"># play a PCM drum every quarter note.</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>amy.send(sequence<span class="op">=</span><span class="st">&quot;,,1&quot;</span>) <span class="co"># remove the eighth note sequence</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">1</span>, vel<span class="op">=</span><span class="dv">1</span>, wave<span class="op">=</span>amy.PCM, patch<span class="op">=</span><span class="dv">1</span>, note<span class="op">=</span><span class="dv">70</span>, sequence<span class="op">=</span><span class="st">&quot;,48,2&quot;</span>) <span class="co"># change the quarter note event</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>amy.send(reset<span class="op">=</span>amy.RESET_SEQUENCER) <span class="co"># clears the sequence</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">0</span>, vel<span class="op">=</span><span class="dv">1</span>, wave<span class="op">=</span>amy.PCM, patch<span class="op">=</span><span class="dv">0</span>, sequence<span class="op">=</span><span class="st">&quot;0,384,1&quot;</span>) <span class="co"># first slot of a 16 1/8th note drum machine</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">1</span>, vel<span class="op">=</span><span class="dv">1</span>, wave<span class="op">=</span>amy.PCM, patch<span class="op">=</span><span class="dv">1</span>, sequence<span class="op">=</span><span class="st">&quot;216,384,2&quot;</span>) <span class="co"># ninth slot of a 16 1/8th note drum machine</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span></code></pre></div>
+<h2 id="examples">Examples</h2>
+<p><code>amy.drums()</code> should play a test pattern.</p>
+<p>Try to set the volume of the synth with
+<code>amy.send(volume=2)</code> – that can be up to 10 or so. The
+default is 1.</p>
+<p><code>amy.reset()</code> resets all oscillators to default. You can
+also do <code>amy.reset(osc=5)</code> to do just one oscillator.</p>
+<p>Let’s set a simple sine wave first</p>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">0</span>, wave<span class="op">=</span>amy.SINE, freq<span class="op">=</span><span class="dv">220</span>, vel<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div>
+<p>We are simply telling oscillator 0 to be a sine wave at 220Hz and
+amplitude (specified as a note-on velocity) of 1. You can also try
+<code>amy.PULSE</code>, or <code>amy.SAW_DOWN</code>, etc.</p>
+<p>To turn off the note, send a note off (velocity zero):</p>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">0</span>, vel<span class="op">=</span><span class="dv">0</span>)  <span class="co"># Note off.</span></span></code></pre></div>
+<p>You can also make oscillators louder with <code>vel</code> larger
+than 1. By default, the total amplitude comes from multiplying together
+the oscillator amplitude (i.e., the natural level of the oscillator,
+which is 1 by default) and the velocity (the particular level of this
+note event) – however, this can be changed by changing the default
+values of the <code>amp</code> <strong>ControlCoefficients</strong> (see
+below).</p>
+<p>You can also use <code>note</code> (MIDI note value) instead of
+<code>freq</code> to control the oscillator frequency for each note
+event:</p>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>amy.reset()</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">0</span>, wave<span class="op">=</span>amy.SINE, note<span class="op">=</span><span class="dv">57</span>, vel<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div>
+<p>This won’t work as intended without the <code>amy.reset()</code>,
+because once you’ve set the oscillator to a non-default frequency with
+<code>freq=220</code>, it will act as an offset to the frequency
+specified by <code>note</code>. (See
+<strong>ControlCoefficients</strong> below to see how to control this
+behavior).</p>
+<p>Now let’s make a lot of sine waves!</p>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>amy.reset()</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">16</span>):</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    amy.send(osc<span class="op">=</span>i, wave<span class="op">=</span>amy.SINE, freq<span class="op">=</span><span class="dv">110</span><span class="op">+</span>(i<span class="op">*</span><span class="dv">80</span>), vel<span class="op">=</span>((<span class="dv">16</span><span class="op">-</span>i)<span class="op">/</span><span class="fl">32.0</span>))</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    time.sleep(<span class="fl">0.5</span>) <span class="co"># Sleep for 0.5 seconds</span></span></code></pre></div>
+<p>Neat! You can see how simple / powerful it is to have control over
+lots of oscillators. You have up to 64 (or more, depending on your
+platform). Let’s make it more interesting. A classic analog tone is the
+filtered saw wave. Let’s make one.</p>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">0</span>, wave<span class="op">=</span>amy.SAW_DOWN, filter_freq<span class="op">=</span><span class="dv">400</span>, resonance<span class="op">=</span><span class="dv">5</span>, filter_type<span class="op">=</span>amy.FILTER_LPF)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">0</span>, vel<span class="op">=</span><span class="dv">1</span>, note<span class="op">=</span><span class="dv">40</span>)</span></code></pre></div>
+<p>You want to be able to stop the note too by sending a note off:</p>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">0</span>, vel<span class="op">=</span><span class="dv">0</span>)</span></code></pre></div>
+<p>Sounds nice. But we want that filter freq to go down over time, to
+make that classic filter sweep tone. Let’s use an Envelope Generator! An
+Envelope Generator (EG) creates a smooth time envelope based on a
+breakpoint set, which is a simple list of (time-delta, target-value)
+pairs - you can have up to 8 of these per EG, and 2 different EGs to
+control different things. They’re just like ADSRs, but more powerful.
+You can use an EG to control amplitude, oscillator frequency, filter
+cutoff frequency, PWM duty cycle, or stereo pan. The EG gets triggered
+when the note begins. So let’s make an EG that turns the filter
+frequency down from its start at 3200 Hz to 400 Hz over 1000
+milliseconds. And when the note goes off, it tapers the frequency to 50
+Hz over 200 milliseconds.</p>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">0</span>, wave<span class="op">=</span>amy.SAW_DOWN, resonance<span class="op">=</span><span class="dv">5</span>, filter_type<span class="op">=</span>amy.FILTER_LPF)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">0</span>, filter_freq<span class="op">=</span><span class="st">&#39;50,0,0,0,1&#39;</span>, bp1<span class="op">=</span><span class="st">&#39;0,6.0,1000,3.0,200,0&#39;</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">0</span>, vel<span class="op">=</span><span class="dv">1</span>, note<span class="op">=</span><span class="dv">40</span>)</span></code></pre></div>
+<p>There are two things to note here: Firstly, the envelope is defined
+by the set of breakpoints in <code>bp1</code> (defining the second EG;
+the first is controlled by <code>bp0</code>). The <code>bp</code>
+strings alternate time intervals in milliseconds with target values. So
+<code>0,6.0,1000,3.0,200,0</code> means to move to 6.0 after 0 ms (i.e.,
+the initial value is 6), then to decay to 3.0 over the next 1000 ms (1
+second). The final pair is always taken as the “release”, and does not
+begin until the note-off event is received. In this case, the EG decays
+to 0 in the 200 ms after the note-off.</p>
+<p>Secondly, EG1 is coupled to the filter frequency with
+<code>filter_freq='50,0,0,0,1'</code>. <code>filter_freq</code> is an
+example of a set of <strong>ControlCoefficients</strong> where the
+control value is calculated on-the-fly by combining a set of inputs
+scaled by the coefficients. This is explained fully below, but for now
+the first coefficient (here 50) is taken as a constant, and the 5th
+coefficient (here 1) is applied to the output of EG1. To get good
+“musical” behavior, the filter frequency is controlled using a “unit per
+octave” rule. So if the envelope is zero, the filter is at its base
+frequency of 50 Hz. But the envelope starts at 6.0, which, after scaling
+by the control coefficient of 1, drives the filter frequency 6 octaves
+higher, or 2^6 = 64x the frequency – 3200 Hz. As the envelope decays to
+3.0 over the first 1000 ms, the filter moves to 2^3 = 8x the default
+frequency, giving 400 Hz. It’s only during the final release of 200 ms
+that it falls back to 0, giving a final filter frequency of (2^0 = 1x)
+50 Hz.</p>
+<h3 id="controlcoefficients">ControlCoefficients</h3>
+<p>The full set of parameters accepting
+<strong>ControlCoefficients</strong> is <code>amp</code>,
+<code>freq</code>, <code>filter_freq</code>, <code>duty</code>, and
+<code>pan</code>. ControlCoefficients are a list of up to 7 floats that
+are multiplied by a range of control signals, then summed up to give the
+final result (in this case, the filter frequency). The control signals
+are: * <code>const</code>: A constant value of 1 - so the first number
+in the control coefficient list is the default value if all the others
+are zero. * <code>note</code>: The frequency corresponding to the
+<code>note</code> parameter to the note-on event (converted to
+unit-per-octave relative to middle C). * <code>vel</code>: The velocity,
+from the note-on event. * <code>eg0</code>: The output of Envelope
+Generator 0. * <code>eg1</code>: The output of Envelope Generator 1. *
+<code>mod</code>: The output of the modulating oscillator, specified by
+the <code>mod_source</code> parameter. * <code>bend</code>: The current
+pitch bend value (from <code>amy.send(pitch_bend=0.5)</code> etc.).</p>
+<p>The set <code>50,0,0,0,1</code> means that we have a base frequency
+of 50 Hz, we ignore the note frequency and velocity and EG0, but we also
+add the output of EG1. Any coefficients that you do not specify, for
+instance by providing fewer than 7 values, are not modified. You can
+also use empty strings to skip positional values, so
+<code>filter_freq=',,,,1'</code> couples EG1 to the filter frequency
+without changing any of the other coefficients. (Note that when we
+passed <code>freq=220</code> in the first example, that was interpreted
+setting the <code>const</code> coefficient to 220, but leaving all the
+remaining coefficients untouched.)</p>
+<p>Because entering lists of commas is error prone, you can also specify
+control coefficients as Python dicts consisting of value with keys from
+the list above, i.e. <code>filter_freq={'const': 50, 'eg1': 1}</code> is
+equivalent to <code>filter_freq='50,,,,1'</code>.</p>
+<p>You can use the same EG to control several things at once. For
+example, we could include <code>freq=',,,,0.333'</code>, which says to
+modify the note frequency from the same EG1 as is controlling the filter
+frequency, but scaled down by 1/3rd so the initial decay is over 1
+octave, not 3. Give it a go!</p>
+<p>The note frequency is scaled relative to a zero-point of middle C
+(MIDI note 60, 261.63 Hz), so to make the oscillator faithfully track
+the <code>note</code> parameter to the note-on event, you would use
+something like <code>freq='261.63,1'</code>. Setting it to
+<code>freq='523.26,1'</code> would make the oscillator always be one
+octave higher than the <code>note</code> MIDI number. Setting
+<code>freq='261.3,0.5'</code> would make the oscillator track the
+<code>note</code> parameter at half an octave per unit, so while
+<code>note=60</code> would still give middle C, <code>note=72</code>
+(C5) would make the oscillator run at F#4, and <code>note=84</code> (C6)
+would be required to get C5 from the oscillator.</p>
+<p>The default set of ControlCoefficients for <code>freq</code> is
+<code>'261.63,1,0,0,0,0,1'</code>, i.e. a base of middle C, tracking the
+MIDI note, plus pitch bend (at unit-per-octave). Because 261.63 is such
+an important value, as a special case, setting the first
+<code>freq</code> value to zero is magically rewritten as 261.63, so
+<code>freq='0,1,0,0,0,0,1'</code> also yields the default behavior.
+<code>amp</code> also has a set of defaults:
+<code>amp='0,0,1,1,0,0,0'</code>, i.e. tracking note-on velocity plus
+modulation by EG0 (which just tracks the note-on status if it has not
+been set up). <code>amp</code> is a little special because the
+individual components are <em>multiplied</em> together, instead of added
+together, for any control inputs with nonzero coefficients. Finally, an
+offset of 1.0 is added to the coefficient-scaled LFO modulator and pitch
+bend inputs before multiplying them into the amplitude, to allow small
+variations around unity e.g. for tremolo. These defaults are set up in
+<a
+href="https://github.com/shorepine/amy/blob/b1ed189b01e6b908bc19f18a4e0a85761d739807/src/amy.c#L551"><code>src/amy.c:reset_osc()</code></a>.</p>
+<p>We also have LFOs, which are implemented as one oscillator modulating
+another (instead of sending its waveform to the output). You set up the
+low-frequency oscillator, then have it control a parameter of another
+audible oscillator. Let’s make the classic 8-bit duty cycle pulse wave
+modulation, a favorite:</p>
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>amy.reset()  <span class="co"># Clear the state.</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">1</span>, wave<span class="op">=</span>amy.SINE, freq<span class="op">=</span><span class="fl">0.5</span>, amp<span class="op">=</span><span class="dv">1</span>)   <span class="co"># We set the amp but not the vel, so it doesn&#39;t sound.</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">0</span>, wave<span class="op">=</span>amy.PULSE, duty<span class="op">=</span>{<span class="st">&#39;const&#39;</span>: <span class="fl">0.5</span>, <span class="st">&#39;mod&#39;</span>: <span class="fl">0.4</span>}, mod_source<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">0</span>, note<span class="op">=</span><span class="dv">60</span>, vel<span class="op">=</span><span class="fl">0.5</span>)</span></code></pre></div>
+<p>You see we first set up the modulation oscillator (a sine wave at
+0.5Hz, with amplitude of 1). We do <em>not</em> send it a velocity,
+because that would make it start sending a 0.5 Hz sinewave to the audio
+output; we want its output only to be used internally. Then we set up
+the oscillator to be modulated, a pulse wave with a modulation source of
+oscillator 1 and the duty <strong>ControlCoefficients</strong> set to
+have a constant value of 0.5 plus 0.4 times the modulating input (i.e.,
+the depth of the pulse width modulation, where 0.4 modulates between 0.1
+and 0.9, almost the maximum depth). The initial duty cycle will start at
+0.5 and be offset by the state of oscillator 1 every tick, to make that
+classic thick saw line from the C64 et al. The modulation will
+re-trigger every note on. Just like with envelope generators, the
+modulation oscillator has a ‘slot’ in the ControlCoefficients - the 6th
+coefficient, <code>mod</code> - so it can modulate PWM duty cycle,
+amplitude, frequency, filter frequency, or pan! And if you want to
+modulate more than one thing, like frequency and duty, just specify
+multiple ControlCoefficients:</p>
+<div class="sourceCode" id="cb21"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">1</span>, wave<span class="op">=</span>amy.TRIANGLE, freq<span class="op">=</span><span class="dv">5</span>, amp<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">0</span>, wave<span class="op">=</span>amy.PULSE, duty<span class="op">=</span>{<span class="st">&#39;const&#39;</span>: <span class="fl">0.5</span>, <span class="st">&#39;mod&#39;</span>: <span class="fl">0.25</span>}, freq<span class="op">=</span>{<span class="st">&#39;mod&#39;</span>: <span class="fl">0.5</span>}, mod_source<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">0</span>, note<span class="op">=</span><span class="dv">60</span>, vel<span class="op">=</span><span class="fl">0.5</span>)</span></code></pre></div>
+<p><code>amy.py</code> has some helpful presets, if you want to use
+them, or add to them. To make that filter bass, just do
+<code>amy.preset(1, osc=0)</code> and then
+<code>amy.send(osc=0, vel=1, note=40)</code> to hear it. Here’s another
+one:</p>
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>amy.preset(<span class="dv">0</span>, osc<span class="op">=</span><span class="dv">2</span>) <span class="co"># will set a simple sine wave tone on oscillator 2</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">2</span>, note<span class="op">=</span><span class="dv">50</span>, vel<span class="op">=</span><span class="fl">1.5</span>) <span class="co"># will play the note at velocity 1.5</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">2</span>, vel<span class="op">=</span><span class="dv">0</span>) <span class="co"># will send a &quot;note off&quot; -- you&#39;ll hear the note release</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">2</span>, freq<span class="op">=</span><span class="fl">220.5</span>, vel<span class="op">=</span><span class="fl">1.5</span>) <span class="co"># same but specifying the frequency</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>amy.reset()</span></code></pre></div>
+<h2 id="core-oscillators">Core oscillators</h2>
+<p>We support bandlimited saw, pulse/square and triangle waves,
+alongside sine and noise. Use the wave parameter: 0=SINE, PULSE,
+SAW_DOWN, SAW_UP, TRIANGLE, NOISE. Each oscillator can have a frequency
+(or set by midi note), amplitude and phase (set in 0-1.). You can also
+set <code>duty</code> for the pulse type. We also have a karplus-strong
+type (KS=6).</p>
+<p>Oscillators will not become audible until a <code>velocity</code>
+over 0 is set for the oscillator. This is a “note on” and will trigger
+any modulators or envelope generators set for that oscillator. Setting
+<code>velocity</code> to 0 sets a note off, which will stop modulators
+and also finish the envelopes at their release pair.
+<code>velocity</code> also internally sets <code>amplitude</code>, but
+you can manually set <code>amplitude</code> after <code>velocity</code>
+starts a note on.</p>
+<h2 id="lfos-modulators">LFOs &amp; modulators</h2>
+<p>Any oscillator can modulate any other oscillator. For example, a LFO
+can be specified by setting oscillator 0 to 0.25Hz sine, with oscillator
+1 being a 440Hz sine. Using the 6th parameter of
+<strong>ControlCoefficient</strong> lists, you can have oscillator 0
+modulate frequency, amplitude, filter frequency, or pan of oscillator 1.
+You can also add targets together, for example amplitude+frequency. Set
+the <code>mod_target</code> and <code>mod_source</code> on the audible
+oscillator (in this case, oscillator 1.) The source mod oscillator will
+not be audible once it is referred to as a <code>mod_source</code> by
+another oscillator. The amplitude of the modulating oscillator indicates
+how strong the modulation is (aka “LFO depth.”)</p>
+<h2 id="filters">Filters</h2>
+<p>We support lowpass, bandpass and hipass filters in AMY. You can set
+<code>resonance</code> and <code>filter_freq</code> per oscillator.</p>
+<h2 id="eq-volume">EQ &amp; Volume</h2>
+<p>You can set a synth-wide volume (in practice, 0-10), or set the EQ of
+the entire synths’s output.</p>
+<h2 id="envelope-generators">Envelope Generators</h2>
+<p>AMY allows you to set 2 Envelope Generators (EGs) per oscillator. You
+can see these as ADSR / envelopes (and they can perform the same task),
+but they are slightly more capable. Breakpoints are defined as pairs of
+time deltas (specified in milliseconds) and target value. You can
+specify up to 8 pairs, but the last pair you specify will always be seen
+as the “release” pair, which doesn’t trigger until note off. All
+preceding pairs have time deltas relative to the previous segment, so
+<code>100,1,100,0,0,0</code> goes up to 1 over 100 ms, then back down to
+zero over the next 100ms. The last “release” pair counts from ms from
+the note-off.</p>
+<p>An EG can control amplitude, frequency, filter frequency, duty or pan
+of an oscillator via the 4th (EG0) and 5th (EG1) entries in the
+corresponding ControlCoefficients.</p>
+<p>For example, to define a common ADSR curve where a sound sweeps up in
+volume from note on over 50ms, then has a 100ms decay stage to 50% of
+the volume, then is held until note off at which point it takes 250ms to
+trail off to 0, you’d set time to be 50ms and target to be 1.0, then
+100ms with target .5, then a 250ms release with ratio 0. By default,
+amplitude is set up to be controlled by EG0. At every synthesizer tick,
+the given amplitude (default of 1.0) will be multiplied by the EG0
+value. In AMY wire parlance, this would look like
+<code>v0f220w0A50,1.0,100,0.5,250,0</code> to specify a sine wave at
+220Hz with this envelope.</p>
+<p>When using <code>amy.py</code>, use the string form of the
+breakpoint:
+<code>amy.send(osc=0, bp0='50,1.0,100,0.5,250,0')</code>.</p>
+<p>Every note on (specified by setting <code>vel</code> / <code>l</code>
+to anything &gt; 0) will trigger this envelope, and setting velocity to
+0 will trigger the note off / release section.</p>
+<p>You can set a completely separate envelope using the second envelope
+generator, for example, to change pitch and amplitude at different
+rates.</p>
+<p>As with ControlCoefficients, missing values in the comma-separated
+parameter strings mean to leave the existing value unchanged. However,
+unlike ControlCoefficients, it’s important to explicitly indicate every
+value you want to leave unchanged, since the number of parameters
+provided determines the number of breakpoints in the set. So in the
+following sequence:</p>
+<pre><code>amy.send(osc=0, bp0=&#39;0,1,1000,0.1,200,0&#39;)
+amy.send(osc=0, bp0=&#39;,,,0.9,,&#39;)</code></pre>
+<p>.. we end up with the same effect as
+<code>bp0='0,1,1000,0.9,200,0</code>. However, if we do:</p>
+<pre><code>amy.send(osc=0, bp0=&#39;0,1,1000,0.1,200,0&#39;)
+amy.send(osc=0, bp0=&#39;,,,0.9&#39;)  # No trailing commas.</code></pre>
+<p>.. we effectively end up with <code>bp0='0,1,1000,0.9</code>,
+i.e. the 4 elements in the second <code>bp0</code> string change the
+first breakpoint set to have only 2 breakpoints, meaning a constant
+amplitude during note-on, then a final slow release to 0.9 – not at all
+like the first form, and likely not what we wanted.</p>
+<h2 id="audio-input-and-effects">Audio input and effects</h2>
+<p>By setting <code>wave</code> to <code>AUDIO_IN0</code> or
+<code>AUDIO_IN1</code>, you can have either channel of a stereo input
+act as an AMY oscillator. You can use this oscillator like you would any
+other in AMY, apply global effects to it, add filters, change amplitude,
+etc.</p>
+<pre><code>amy.send(osc=0, wave=amy.AUDIO_IN0, vel=1)
+amy.echo(1, 250, 250, 0.5, 0.5)</code></pre>
+<p>If you are building your own audio system around AMY you will want to
+fill in the buffer <code>amy_in_block</code> before rendering. Our
+included <code>miniaudio</code>-based system does this for you. See <a
+href="https://github.com/shorepine/amychip"><code>amychip</code></a> for
+a demo of this in hardware.</p>
+<h2 id="fm-algo-type">FM &amp; ALGO type</h2>
+<p>Try default DX7 patches, from 128 to 256:</p>
+<div class="sourceCode" id="cb26"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>amy.send(voices<span class="op">=</span><span class="st">&#39;0&#39;</span>, load_patch<span class="op">=</span><span class="dv">128</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>amy.send(voices<span class="op">=</span><span class="st">&#39;0&#39;</span>, note<span class="op">=</span><span class="dv">50</span>,vel<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div>
+<p>The <code>load_patch</code> lets you set which preset is used (0 to
+127 are the Juno 106 analog synth presets, and 128 to 255 are the DX7 FM
+presets). But let’s make the classic FM bell tone ourselves, without a
+patch. We’ll just be using two operators (two sine waves), one
+modulating the other.</p>
+<figure>
+<img
+src="https://raw.githubusercontent.com/shorepine/alles/main/pics/dx7_algorithms.jpg"
+alt="DX7 Algorithms" />
+<figcaption aria-hidden="true">DX7 Algorithms</figcaption>
+</figure>
+<p>When building your own algorithm sets, assign a separate oscillator
+as wave=<code>ALGO</code>, but the source oscillators as
+<code>SINE</code>. The algorithm #s are borrowed from the DX7. You don’t
+have to use all 6 operators. Note that the <code>algo_source</code>
+parameter counts backwards from operator 6. When building operators,
+they can have their frequencies specified directly with
+<code>freq</code> or as a ratio of the root <code>ALGO</code> oscillator
+via <code>ratio</code>.</p>
+<div class="sourceCode" id="cb27"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>amy.reset()</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">2</span>, wave<span class="op">=</span>amy.SINE, ratio<span class="op">=</span><span class="dv">1</span>, amp<span class="op">=</span>{<span class="st">&#39;const&#39;</span>: <span class="dv">1</span>, <span class="st">&#39;vel&#39;</span>: <span class="dv">0</span>, <span class="st">&#39;eg0&#39;</span>: <span class="dv">0</span>})</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">1</span>, wave<span class="op">=</span>amy.SINE, ratio<span class="op">=</span><span class="fl">0.2</span>, amp<span class="op">=</span>{<span class="st">&#39;const&#39;</span>: <span class="dv">1</span>, <span class="st">&#39;vel&#39;</span>: <span class="dv">0</span>, <span class="st">&#39;eg0&#39;</span>: <span class="dv">1</span>}, bp0<span class="op">=</span><span class="st">&#39;0,1,1000,0,0,0&#39;</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">0</span>, wave<span class="op">=</span>amy.ALGO, algorithm<span class="op">=</span><span class="dv">1</span>, algo_source<span class="op">=</span><span class="st">&#39;,,,,2,1&#39;</span>)</span></code></pre></div>
+<p>Let’s unpack that last line: we’re setting up a ALGO “oscillator”
+that controls up to 6 other oscillators. We only need two, so we set the
+<code>algo_source</code> to mostly not used and have oscillator 2
+modulate oscillator 1. You can have the operators work with each other
+in all sorts of crazy ways. For this simple example, we just use the DX7
+algorithm #1. And we’ll use only operators 2 and 1. Therefore our
+<code>algo_source</code> lists the oscillators involved, counting
+backwards from 6. We’re saying only have operator 2 (osc 2 in this case)
+and operator 1 (osc 1). From the picture, we see DX7 algorithm 1 has
+operator 2 feeding operator 1, so we have osc 2 providing the
+frequency-modulation input to osc 1.</p>
+<p>What’s going on with <code>ratio</code>? And <code>amp</code>? Ratio,
+for FM synthesis operators, means the ratio of the frequency for that
+operator relative to the base note. So oscillator 1 will be played at
+20% of the base note frequency, and oscillator 2 will take the frequency
+of the base note. In FM synthesis, the <code>amp</code> of a modulator
+input is called “beta”, which describes the strength of the modulation.
+Here, osc 2 is providing the modulation with a constant beta of 1, which
+will result in a range of sinusoids with frequencies around the carrier
+at multiples of the modulator. We set osc 2’s amp ControlCoefficients
+for velocity and envelope generator 0 to 0 because they default to 1,
+but we don’t want them for this example (FM sines don’t receive the
+parent note’s velocity, so we need to disable its influence). Osc 1 has
+<code>bp0</code> decaying its amplitude to 0 over 1000 ms, but because
+beta is fixed there’s no other change to the sound over that time.</p>
+<p>Ok, we’ve set up the oscillators. Now, let’s hear it!</p>
+<div class="sourceCode" id="cb28"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">0</span>, note<span class="op">=</span><span class="dv">60</span>, vel<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div>
+<p>You should hear a bell-like tone. Nice. (This example is also
+implemented using the C API in <a
+href="https://github.com/shorepine/amy/blob/b1ed189b01e6b908bc19f18a4e0a85761d739807/src/examples.c#L281"><code>src/examples.c:example_fm()</code></a>.)</p>
+<p>FM gets much more exciting when we vary beta, which just means
+varying the amplitide envelope of the modulator. The spectral effects of
+the frequency modulation depend on beta in a rich, nonlinear way,
+leading to the glistening FM sounds. Let’s try fading in the modulator
+over 5 seconds:</p>
+<div class="sourceCode" id="cb29"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>amy.reset()</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">2</span>, wave<span class="op">=</span>amy.SINE, ratio<span class="op">=</span><span class="fl">0.2</span>, amp<span class="op">=</span>{<span class="st">&#39;const&#39;</span>: <span class="dv">1</span>, <span class="st">&#39;vel&#39;</span>: <span class="dv">0</span>, <span class="st">&#39;eg0&#39;</span>: <span class="dv">2</span>}, bp0<span class="op">=</span><span class="st">&#39;0,0,5000,1,0,0&#39;</span>)  <span class="co"># Op 2, modulator</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">1</span>, wave<span class="op">=</span>amy.SINE, ratio<span class="op">=</span><span class="dv">1</span>, amp<span class="op">=</span>{<span class="st">&#39;const&#39;</span>: <span class="dv">1</span>, <span class="st">&#39;vel&#39;</span>: <span class="dv">0</span>, <span class="st">&#39;eg0&#39;</span>: <span class="dv">0</span>})  <span class="co"># Op 1, carrier</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">0</span>, wave<span class="op">=</span>amy.ALGO, algorithm<span class="op">=</span><span class="dv">1</span>, algo_source<span class="op">=</span><span class="st">&#39;,,,,2,1&#39;</span>)</span></code></pre></div>
+<p>Just a refresher on envelope generators; here we are saying to set
+the beta parameter (amplitude of the modulating tone) to 2x envelope
+generator 0’s output, which starts at 0 at time 0 (actually, this is the
+default), then grows to 1.0 at time 5000ms - so beta grows to 2.0. At
+the release of the note, beta immediately drops back to 0. We can play
+it with:</p>
+<div class="sourceCode" id="cb30"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">0</span>, note<span class="op">=</span><span class="dv">60</span>, vel<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div>
+<p>and stop it with</p>
+<div class="sourceCode" id="cb31"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">0</span>, vel<span class="op">=</span><span class="dv">0</span>)</span></code></pre></div>
+<h2 id="partials">Partials</h2>
+<p>Additive synthesis is simply adding together oscillators to make more
+complex tones. You can modulate the breakpoints of these oscillators
+over time, for example, changing their pitch or time without artifacts,
+as the synthesis is simply playing sine waves back at certain amplitudes
+and frequencies (and phases). It’s well suited to certain types of
+instruments.</p>
+<figure>
+<img
+src="https://raw.githubusercontent.com/shorepine/alles/main/pics/partials.png"
+alt="Partials" />
+<figcaption aria-hidden="true">Partials</figcaption>
+</figure>
+<p>We have analyzed the partials of a group of instruments and stored
+them as presets baked into the synth. Each of these patches are
+comprised of multiple sine wave oscillators, changing over time. The
+<code>PARTIALS</code> type has the presets:</p>
+<div class="sourceCode" id="cb32"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">0</span>, vel<span class="op">=</span><span class="dv">1</span>, note<span class="op">=</span><span class="dv">50</span>, wave<span class="op">=</span>amy.PARTIALS, patch<span class="op">=</span><span class="dv">5</span>) <span class="co"># a nice organ tone</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">0</span>, vel<span class="op">=</span><span class="dv">1</span>, note<span class="op">=</span><span class="dv">55</span>, wave<span class="op">=</span>amy.PARTIALS, patch<span class="op">=</span><span class="dv">5</span>) <span class="co"># change the frequency</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">0</span>, vel<span class="op">=</span><span class="dv">1</span>, note<span class="op">=</span><span class="dv">50</span>, wave<span class="op">=</span>amy.PARTIALS, patch<span class="op">=</span><span class="dv">6</span>, ratio<span class="op">=</span><span class="fl">0.2</span>) <span class="co"># ratio slows down the partial playback</span></span></code></pre></div>
+<p>The presets are just the start of what you can do with partials in
+AMY. You can analyze any piece of audio and decompose it into sine waves
+and play it back on the synthesizer in real time. It requires a little
+setup on the client end, here on macOS:</p>
+<div class="sourceCode" id="cb33"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install python3 swig ffmpeg</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install pydub numpy <span class="at">--user</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> xvf loris-1.8.tar</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> loris-1.8</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="va">CPPFLAGS</span><span class="op">=</span><span class="kw">`</span><span class="ex">python3-config</span> <span class="at">--includes</span><span class="kw">`</span> <span class="va">PYTHON</span><span class="op">=</span><span class="kw">`</span><span class="fu">which</span> python3<span class="kw">`</span> <span class="ex">./configure</span> <span class="at">--with-python</span> <span class="at">--prefix</span><span class="op">=</span><span class="kw">`</span><span class="ex">python3-config</span> <span class="at">--prefix</span><span class="kw">`</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> install</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span></code></pre></div>
+<p>And then in python (run <code>python3</code>):</p>
+<div class="sourceCode" id="cb34"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> partials, amy</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>(m, s) <span class="op">=</span> partials.sequence(<span class="st">&#39;sounds/sleepwalk_original_45s.mp3&#39;</span>)  <span class="co"># Any audio file</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="dv">153</span> partials <span class="kw">and</span> <span class="dv">977</span> breakpoints, <span class="bu">max</span> oscs used at once was <span class="dv">8</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>amy.live() <span class="co"># Start AMY playing audio</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>partials.play(s)</span></code></pre></div>
+<p>https://user-images.githubusercontent.com/76612/131150119-6fa69e3c-3244-476b-a209-1bd5760bc979.mp4</p>
+<p>You can see, given any audio file, you can hear a sine wave
+decomposition version of in AMY. This particular sound emitted 109
+partials, with a total of 1029 breakpoints among them to play back to
+the mesh. Of those 109 partials, only 8 are active at once.
+<code>partials.sequence()</code> performs voice stealing to ensure we
+use as few oscillators as necessary to play back a set.</p>
+<p>There’s a lot of parameters you can (and should!) play with in Loris.
+<code>partials.sequence</code> and <code>partials.play</code>takes the
+following with their defaults:</p>
+<div class="sourceCode" id="cb35"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sequence(filename, <span class="co"># any audio filename</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>             max_len_s <span class="op">=</span> <span class="dv">10</span>, <span class="co"># analyze first N seconds</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>             amp_floor<span class="op">=-</span><span class="dv">30</span>, <span class="co"># only accept partials at this amplitude in dB, lower #s == more partials</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>             hop_time<span class="op">=</span><span class="fl">0.04</span>, <span class="co"># time between analysis windows, impacts distance between breakpoints</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>             max_oscs<span class="op">=</span>amy.OSCS, <span class="co"># max AMY oscs to take up</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>             freq_res <span class="op">=</span> <span class="dv">10</span>, <span class="co"># freq resolution of analyzer, higher # -- less partials &amp; breakpoints </span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>             freq_drift<span class="op">=</span><span class="dv">20</span>, <span class="co"># max difference in Hz within a single partial</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>             analysis_window <span class="op">=</span> <span class="dv">100</span> <span class="co"># analysis window size </span></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>             ) <span class="co"># returns (metadata, sequence)</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> play(sequence, <span class="co"># from partials.sequence</span></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>         osc_offset<span class="op">=</span><span class="dv">0</span>, <span class="co"># start at this oscillator #</span></span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>         sustain_ms <span class="op">=</span> <span class="op">-</span><span class="dv">1</span>, <span class="co"># if the instrument should sustain, here&#39;s where (in ms)</span></span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>         sustain_len_ms <span class="op">=</span> <span class="dv">0</span>, <span class="co"># how long to sustain for</span></span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>         time_ratio <span class="op">=</span> <span class="dv">1</span>, <span class="co"># playback speed -- 0.5 , half speed</span></span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>         pitch_ratio <span class="op">=</span> <span class="dv">1</span>, <span class="co"># frequency scale, 0.5 , half freq</span></span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>         amp_ratio <span class="op">=</span> <span class="dv">1</span>, <span class="co"># amplitude scale</span></span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>         )</span></code></pre></div>
+<h2 id="build-your-own-partials">Build-your-own Partials</h2>
+<p>You can also explicitly control partials in “build-your-own partials”
+mode, accessed via <code>wave=amy.BYO_PARTIALS</code>. This sets up a
+string of oscs as individual sinusoids, just like <code>PARTIALS</code>
+mode, but it’s up to you to control the details of each partial via its
+parameters, envelopes, etc. You just have to say how many partials you
+want with <code>num_partials</code>. You can then individually set up
+the amplitude <code>bp0</code> envelopes of the next
+<code>num_partials</code> oscs for arbitrary control, subject to the
+limit of 7 breakpoints plus release for each envelope. For instance, to
+get an 8-harmonic pluck tone with a 50 ms attack, and harmonic weights
+and decay times inversely proportional to to the harmonic number:</p>
+<pre><code>num_partials = 8
+amy.send(osc=0, wave=amy.BYO_PARTIALS, num_partials=num_partials)
+for i in range(1, num_partials + 1):
+    # Set up each partial as the corresponding harmonic of 261.63
+    # with an amplitude of 1/N, 50ms attack, and a decay of 1 sec / N.
+    amy.send(osc=i, wave=amy.PARTIAL, freq=261.63 * i,
+             bp0=&#39;50,%.2f,%d,0,0,0&#39; % ((1.0 / i), 1000 // i))
+amy.send(osc=0, note=60, vel=1)</code></pre>
+<p>You can add a filter (or an envelope etc.) to the sum of all the
+<code>PARTIAL</code> oscs by configuring it on the parent
+<code>PARTIALS</code> osc:</p>
+<pre><code>amy.send(osc=0, filter=amy.FILTER_HPF, resonance=4, filter_freq={&#39;const&#39;: 200, &#39;eg1&#39;: 4}, bp1=&#39;0,0,1000,1,0,0&#39;)
+amy.send(osc=0, note=60, vel=1)
+# etc.</code></pre>
+<p>Note that the default <code>bp0</code> amplitude envelope of the
+<code>PARTIALS</code> osc is a gate, so if you want to have a nonzero
+release on your partials, you’ll need to add a slower release to the
+<code>PARTIALS</code> osc to avoid it cutting them off.</p>
+<h2 id="pcm">PCM</h2>
+<p>AMY comes with a set of 67 drum-like and instrument PCM samples to
+use as well, as they are normally hard to render with additive,
+subtractive or FM synthesis. You can use the type <code>PCM</code> and
+patch numbers 0-66 to explore them. Their native pitch is used if you
+don’t give a frequency or note parameter. You can update the baked-in
+PCM sample bank using <code>amy_headers.py</code>.</p>
+<div class="sourceCode" id="cb38"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">0</span>, wave<span class="op">=</span>amy.PCM, vel<span class="op">=</span><span class="dv">1</span>, patch<span class="op">=</span><span class="dv">10</span>) <span class="co"># cowbell</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">0</span>, wave<span class="op">=</span>amy.PCM, vel<span class="op">=</span><span class="dv">1</span>, patch<span class="op">=</span><span class="dv">10</span>, note<span class="op">=</span><span class="dv">70</span>) <span class="co"># higher cowbell! </span></span></code></pre></div>
+<p>You can turn on sample looping, helpful for instruments, using
+<code>feedback</code>:</p>
+<div class="sourceCode" id="cb39"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>amy.send(wave<span class="op">=</span>amy.PCM,vel<span class="op">=</span><span class="dv">1</span>,patch<span class="op">=</span><span class="dv">21</span>,feedback<span class="op">=</span><span class="dv">0</span>) <span class="co"># clean guitar string, no looping</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>amy.send(wave<span class="op">=</span>amy.PCM,vel<span class="op">=</span><span class="dv">1</span>,patch<span class="op">=</span><span class="dv">21</span>,feedback<span class="op">=</span><span class="dv">1</span>) <span class="co"># loops forever until note off</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>amy.send(vel<span class="op">=</span><span class="dv">0</span>) <span class="co"># note off</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>amy.send(wave<span class="op">=</span>amy.PCM,vel<span class="op">=</span><span class="dv">1</span>,patch<span class="op">=</span><span class="dv">35</span>,feedback<span class="op">=</span><span class="dv">1</span>) <span class="co"># nice violin</span></span></code></pre></div>
+<h2 id="sampler-aka-memory-pcm">Sampler (aka Memory PCM)</h2>
+<p>You can also load your own samples into AMY at runtime. We support
+sending PCM data over the wire protocol. Use <code>load_sample</code> in
+<code>amy.py</code> as an example:</p>
+<div class="sourceCode" id="cb40"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>amy.load_sample(<span class="st">&quot;G1.wav&quot;</span>, patch<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>amy.send(osc<span class="op">=</span><span class="dv">0</span>, wave<span class="op">=</span>amy.PCM, patch<span class="op">=</span><span class="dv">3</span>, vel<span class="op">=</span><span class="dv">1</span>) <span class="co"># plays the sample</span></span></code></pre></div>
+<p>You can use any patch number. If it overlaps with an existing PCM
+baked in number, it will play the memory sample instead of the baked in
+sample until you <code>unload_sample</code> the patch.</p>
+<p>If the WAV file has sampler metadata like loop points or base MIDI
+note, we use that in AMY. You can set it directly as well using
+<code>loopstart</code>, <code>loopend</code>, <code>midinote</code> or
+<code>length</code> in the <code>load_sample</code> call. To unload a
+sample:</p>
+<div class="sourceCode" id="cb41"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>amy.unload_sample(<span class="dv">3</span>) <span class="co"># unloads the RAM for patch 3</span></span></code></pre></div>
+<p>Under the hood, if AMY receives a <code>load_sample</code> message
+(with patch number and nonzero length), it will then pause all other
+message parsing until it has received <code>length</code> amount of
+base64 encoded bytes over the wire protocol. Each individual message
+must be base64 encoded. Since AMY’s maximum message length is 255 bytes,
+there is logic in <code>load_sample</code> in <code>amy.py</code> to
+split the sample data into 188 byte chunks, which generates 252 bytes of
+base64 text. Please see <code>amy.load_sample</code> if you wish to load
+samples on other platforms.</p>
+<h2
+id="voices-and-patches-dx7-juno-6-custom-support"><a name="voices_and_patches"></a>Voices
+and patches (DX7, Juno-6, custom) support</h2>
+<p>Up until now, we have been directly controlling the AMY oscillators,
+which are the fundamental building blocks for sound production. However,
+as we’ve seen, most interesting tones involve multiple oscillators. AMY
+provides a second layer of organization, <strong>voices</strong>, to
+make it easier to configure and use groups of oscillators in
+coordination. And you configure a voice by using a
+<strong>patch</strong>, which is simply a stored list of AMY commands
+that set up one or more oscillators.</p>
+<p>A voice in AMY is a collection of oscillators. You can assign any
+patch to any voice number, or set up mulitple voices to have the same
+patch (for example, a polyphonic synth), and AMY will allocate the
+oscillators it needs under the hood. (Note that when you use voices,
+you’ll need to include the <code>voices</code> arg when addressing
+oscillators, and AMY will automatically route your command to the
+relevant oscillator in each voice set – there’s no other way to tell
+which oscillators are being used by which voices.)</p>
+<p>To play a patch, for instance the built-in patches emulating Juno and
+DX7 synthesizers, you allocate them to one or more voices, then send
+note events, or parameter moidifications, to those voices. For example,
+a multitimbral Juno/DX7 synth can be set up like this:</p>
+<div class="sourceCode" id="cb42"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>amy.send(voices<span class="op">=</span><span class="st">&#39;0,1,2,3&#39;</span>, load_patch<span class="op">=</span><span class="dv">1</span>)     <span class="co"># Juno patch #1 on voice 0-3</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>amy.send(voices<span class="op">=</span><span class="st">&#39;4,5,6,7&#39;</span>, load_patch<span class="op">=</span><span class="dv">129</span>)   <span class="co"># DX7 patch #2 on voices 4-7</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>amy.send(voices<span class="op">=</span><span class="dv">0</span>, note<span class="op">=</span><span class="dv">60</span>, vel<span class="op">=</span><span class="dv">1</span>)           <span class="co"># Play note 60 on voice 0</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>amy.send(voices<span class="op">=</span><span class="dv">0</span>, osc<span class="op">=</span><span class="dv">0</span>, filter_freq<span class="op">=</span><span class="dv">8000</span>)  <span class="co"># Open up the filter on the Juno voice (using its bottom oscillator)</span></span></code></pre></div>
+<p>The code in <code>amy_headers.py</code> generates these patches and
+bakes them into AMY so they’re ready for playback on any device. You can
+add your own patches by storing alternative wire-protocol setup strings
+in <code>patches.h</code>.</p>
+<p>You can also create your own patches at runtime and use them for
+voices with <code>store_patch='PATCH_NUMBER,AMY_PATCH_STRING'</code>
+where <code>PATCH_NUMBER</code> is a number in the range 1024-1055. This
+message must be on its own in the <code>amy.send()</code> command, not
+combined with any other parameters, because AMY will treat the rest of
+the message as a patch rather than interpreting the remaining arguments
+as ususal.</p>
+<p>So you can do:</p>
+<pre><code>&gt;&gt;&gt; import amy; amy.live()  # Not needed on Tulip.
+&gt;&gt;&gt; amy.send(store_patch=&#39;1024,v0S0Zv0S1Zv1w0f0.25P0.5a0.5Zv0w0f261.63,1,0,0,0,1A0,1,500,0,0,0L1Z&#39;)
+&gt;&gt;&gt; amy.send(voices=0, load_patch=1024)
+&gt;&gt;&gt; amy.send(voices=0, vel=2, note=50)</code></pre>
+<p>AMY infers the number of oscs needed for the patch at
+<code>store_patch</code> time. If you store a new patch over an old one,
+that old memory is freed and re-allocated. (We rely on
+<code>malloc</code> for all of this.)</p>
+<p>You can “record” patches in a sequence of commands like this:</p>
+<pre><code>&gt;&gt;&gt; amy.log_patch()
+&gt;&gt;&gt; # Execute any commands to set up the oscillators.
+&gt;&gt;&gt; amy.preset(5)
+&gt;&gt;&gt; bass_drum = amy.retrieve_patch()
+&gt;&gt;&gt; bass_drum
+&#39;v0S0Zv0S1Zv1w0f0.25P0.5a0.5Zv0w0f261.63,1,0,0,0,1A0,1,500,0,0,0L1Z&#39;
+&gt;&gt;&gt; amy.send(store_patch=&#39;1024,&#39; + bass_drum)</code></pre>
+<p><strong>Note on patches and AMY timing</strong>: If you’re using
+AMY’s time scheduler (see below) note that unlike all other AMY
+commands, allocating new voices from patches (using
+<code>load_patch</code>) will happen once AMY receives the message, not
+using any advance clock (<code>time</code>) you may have set. This
+default is the right decision for almost all use cases of AMY, but if
+you do need to be able to “schedule” voice allocations within the short
+term scheduling window, you can load patches by sending the patch string
+directly to AMY using the timer, and manage your own oscillator mapping
+in your code.</p>
+<h2 id="developer-zone">Developer zone</h2>
+<h3 id="generate-header-files-for-patches-and-luts">Generate header
+files for patches and LUTs</h3>
+<p>Run <code>python amy_headers.py</code> to generate all the LUTs and
+patch .h files compiled into AMY.</p>
+</body>
+</html>
