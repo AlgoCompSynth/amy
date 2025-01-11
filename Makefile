@@ -27,8 +27,9 @@ CFLAGS += -DAMY_DEBUG
 # -Wdouble-promotion
 EMSCRIPTEN_OPTIONS = -s WASM=1 \
 -DMA_ENABLE_AUDIO_WORKLETS -sAUDIO_WORKLET=1 -sWASM_WORKERS=1 -sASYNCIFY -sASSERTIONS \
--s INITIAL_MEMORY=128mb \
--s TOTAL_STACK=64mb \
+-s ASYNCIFY_STACK_SIZE=128000 \
+-s INITIAL_MEMORY=256mb \
+-s TOTAL_STACK=128mb \
 -s ALLOW_MEMORY_GROWTH=1 \
 -sMODULARIZE -s 'EXPORT_NAME="amyModule"' \
 -s EXPORTED_RUNTIME_METHODS="['cwrap','ccall']" \
@@ -42,7 +43,7 @@ default: $(TARGET)
 all: default
 
 SOURCES = src/algorithms.c src/amy.c src/envelope.c src/examples.c \
-	src/filters.c src/oscillators.c src/pcm.c src/partials.c src/custom.c \
+	src/filters.c src/oscillators.c src/pcm.c src/partials.c src/interp_partials.c src/custom.c \
 	src/delay.c src/log2_exp2.c src/patches.c src/transfer.c src/sequencer.c \
 	src/libminiaudio-audio.c
 
@@ -57,7 +58,7 @@ src/patches.h: $(PYTHONS) $(HEADERS_BUILD)
 	${PYTHON} amy_headers.py
 
 %.o: %.c $(HEADERS) src/patches.h
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -DAMY_HAS_AUDIO_IN -c $< -o $@
 
 %.o: %.mm $(HEADERS)
 	clang $(CFLAGS) -c $< -o $@
@@ -85,6 +86,9 @@ timing: amy-module
 
 docs/amy.js: $(TARGET)
 	 emcc $(SOURCES) $(EMSCRIPTEN_OPTIONS) -O3 -o $@
+
+docs/amy-audioin.js: $(TARGET)
+	 emcc $(SOURCES) $(EMSCRIPTEN_OPTIONS) -DAMY_HAS_AUDIO_IN -O3 -o $@
 
 clean:
 	-rm -f src/*.o

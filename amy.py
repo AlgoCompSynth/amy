@@ -5,7 +5,7 @@ AMY_SAMPLE_RATE = 44100.0
 AMY_NCHANS = 2
 AMY_OSCS = 120
 MAX_QUEUE = 400
-SINE, PULSE, SAW_DOWN, SAW_UP, TRIANGLE, NOISE, KS, PCM, ALGO, PARTIAL, PARTIALS, BYO_PARTIALS, AUDIO_IN0, AUDIO_IN1, CUSTOM, OFF = range(16)
+SINE, PULSE, SAW_DOWN, SAW_UP, TRIANGLE, NOISE, KS, PCM, ALGO, PARTIAL, PARTIALS, BYO_PARTIALS, INTERP_PARTIALS, AUDIO_IN0, AUDIO_IN1, CUSTOM, OFF = range(17)
 FILTER_NONE, FILTER_LPF, FILTER_BPF, FILTER_HPF, FILTER_LPF24 = range(5)
 ENVELOPE_NORMAL, ENVELOPE_LINEAR, ENVELOPE_DX7, ENVELOPE_TRUE_EXPONENTIAL = range(4)
 RESET_SEQUENCER, RESET_ALL_OSCS, RESET_TIMEBASE, RESET_AMY = (4096, 8192, 16384, 32768)
@@ -206,11 +206,14 @@ def message(**kwargs):
 
 def send_raw(m):
     # override_send is used by e.g. Tulip, to send messages in a different way than libamy or UDP
+    global mess, log
+    global override_send
     if(override_send is not None):
         override_send(m)
     else:
         import libamy
         libamy.send(m)
+    if(log): mess.append(m)
 
 def log_patch():
     global mess, log
@@ -247,10 +250,7 @@ def stop_store_patch(patch_number):
 
 # Send an AMY message to amy
 def send(**kwargs):
-    global override_send
-    global mess, log
     m = message(**kwargs)
-    if(log): mess.append(m)
 
     send_raw(m)
 

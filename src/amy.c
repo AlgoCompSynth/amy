@@ -595,6 +595,7 @@ void reset_osc(uint16_t i ) {
     AMY_UNSET(synth[i].midi_note);
     for (int j = 0; j < NUM_COMBO_COEFS; ++j)
         synth[i].amp_coefs[j] = 0;
+    synth[i].amp_coefs[COEF_CONST] = 1.0f;  // Mostly a no-op, but partials_note_on used to want this?
     synth[i].amp_coefs[COEF_VEL] = 1.0f;
     synth[i].amp_coefs[COEF_EG0] = 1.0f;
     msynth[i].amp = 0;  // This matters for wave=PARTIAL, where msynth amp is effectively 1-frame delayed.
@@ -873,6 +874,7 @@ void osc_note_on(uint16_t osc, float initial_freq) {
     if(AMY_HAS_PARTIALS == 1) {
         //if(synth[osc].wave==PARTIAL)  partial_note_on(osc);
         if(synth[osc].wave==PARTIALS || synth[osc].wave==BYO_PARTIALS) partials_note_on(osc);
+        if(synth[osc].wave==INTERP_PARTIALS) interp_partials_note_on(osc);
     }
     if(AMY_HAS_CUSTOM == 1) {
         if(synth[osc].wave==CUSTOM) custom_note_on(osc, initial_freq);
@@ -1035,7 +1037,6 @@ void play_event(struct delta d) {
     // Ignore velocity events if we've already received one this frame.  This may be due to a loop in chained_oscs.
     if(d.param == VELOCITY) {
         if (*(float *)&d.data > 0) { // new note on (even if something is already playing on this osc)
-            //synth[d.osc].amp_coefs[COEF_CONST] = *(float *)&d.data; // these could be decoupled, later
             synth[d.osc].velocity = *(float *)&d.data;
             synth[d.osc].status = SYNTH_AUDIBLE;
             // an osc came in with a note on.
@@ -1091,11 +1092,12 @@ void play_event(struct delta d) {
                 //synth[d.osc].note_off_clock = total_samples;
                 //partial_note_off(d.osc);
                 #endif
-            } else if(synth[d.osc].wave==PARTIALS || synth[d.osc].wave==BYO_PARTIALS) {
+            } else if(synth[d.osc].wave==PARTIALS || synth[d.osc].wave==BYO_PARTIALS || synth[d.osc].wave==INTERP_PARTIALS) {
                 #if AMY_HAS_PARTIALS == 1
                 AMY_UNSET(synth[d.osc].note_on_clock);
                 synth[d.osc].note_off_clock = total_samples;
-                partials_note_off(d.osc);
+                if(synth[d.osc].wave==INTERP_PARTIALS) interp_partials_note_off(d.osc);
+                else partials_note_off(d.osc);
                 #endif
             } else if(synth[d.osc].wave==PCM) {
                 pcm_note_off(d.osc);
@@ -1278,7 +1280,8 @@ SAMPLE render_osc_wave(uint16_t osc, uint8_t core, SAMPLE* buf) {
             if(synth[osc].wave == ALGO) max_val = render_algo(buf, osc, core);
             if(AMY_HAS_PARTIALS == 1) {
                 //if(synth[osc].wave == PARTIAL) max_val = render_partial(buf, osc);
-                if(synth[osc].wave == PARTIALS || synth[osc].wave == BYO_PARTIALS) max_val = render_partials(buf, osc);
+                if(synth[osc].wave == PARTIALS || synth[osc].wave == BYO_PARTIALS || synth[osc].wave == INTERP_PARTIALS)
+                    max_val = render_partials(buf, osc);
             }
         }
         if(AMY_HAS_CUSTOM == 1) {
@@ -1547,10 +1550,6 @@ int16_t * amy_fill_buffer() {
     return block;
 }
 
-uint32_t ms_to_samples(uint32_t ms) {
-    return (uint32_t)(((float)ms / 1000.0) * (float)AMY_SAMPLE_RATE);
-}
-
 float atoff(const char *s) {
     // Returns float value corresponding to parseable prefix of s.
     // Unlike atof(), it does not recognize scientific format ('e' or 'E')
@@ -1666,12 +1665,28 @@ void parse_algorithm_source(struct synthinfo * t, char *message) {
     }
 }
 
+uint32_t ms_to_samples(uint32_t ms) {
+    uint32_t samps = 0;
+    if (AMY_IS_UNSET(ms)) return AMY_UNSET_VALUE(samps);
+    samps = (uint32_t)(((float)ms / 1000.0) * (float)AMY_SAMPLE_RATE);
+    return samps;
+}
+
+float int_db_to_float_lin(uint32_t db) {
+    float lin = 0;
+    if (AMY_IS_UNSET(db)) return AMY_UNSET_VALUE(lin);
+    lin = powf(10.0f, ((((float)db) - 100.0f) / 20.0f)) - 0.001f;
+    if (lin < 0) return 0;
+    return lin;
+}
+
 // helper to parse the special bp string
-int parse_breakpoint(struct synthinfo * e, char* message, uint8_t which_bpset) {
+int parse_breakpoint_core_float_lin(struct synthinfo * e, char* message, uint8_t which_bpset) {
+    // This is the classic version, int_time_delta_ms,float_lin_val,...
     float vals[2 * MAX_BREAKPOINTS];
     // Read all the values as floats.
     int num_vals = parse_list_float(message, vals, 2 * MAX_BREAKPOINTS,
-                                            AMY_UNSET_VALUE(vals[0]));
+                                    AMY_UNSET_VALUE(vals[0]));
     // Distribute out to times and vals, casting times to ints.
     for (int i = 0; i < num_vals; ++i) {
         if ((i % 2) == 0)
@@ -1682,7 +1697,35 @@ int parse_breakpoint(struct synthinfo * e, char* message, uint8_t which_bpset) {
         else
             e->breakpoint_values[which_bpset][i >> 1] = vals[i];
     }
-    // But values that are not specified at the end of the list indicate the total length of the BP set.
+    return num_vals;
+}
+
+int parse_breakpoint_core_int_db(struct synthinfo * e, char* message, uint8_t which_bpset) {
+    // This is for the special faster additive-synth version, int_time_delta_ms,uint_db_val,...
+    uint32_t vals[2 * MAX_BREAKPOINTS];
+    // Read all the values as floats.
+    int num_vals = parse_list_uint32_t(message, vals, 2 * MAX_BREAKPOINTS,
+                                       AMY_UNSET_VALUE(vals[0]));
+    // Distribute out to times and vals, casting int db values to linear floats.
+    // Both ms_to_samples and int_db_to_float_lin pass through AMY_UNSET suitably translated.
+    for (int i = 0; i < num_vals; ++i) {
+        if ((i % 2) == 0)
+            e->breakpoint_times[which_bpset][i >> 1] = ms_to_samples(vals[i]);
+        else
+            e->breakpoint_values[which_bpset][i >> 1] = int_db_to_float_lin(vals[i]);
+    }
+    return num_vals;
+}
+
+int parse_breakpoint(struct synthinfo * e, char* message, uint8_t which_bpset) {
+    int num_vals;
+    // Test for special case BP string that begins ".." meaning it's unsigned integer dB values.
+    if (message[0] == '.' && message[1] == '.') {
+        num_vals = parse_breakpoint_core_int_db(e, message + 2, which_bpset);
+    } else {
+        num_vals = parse_breakpoint_core_float_lin(e, message, which_bpset);
+    }
+    // Values that are not specified at the end of the list indicate the total length of the BP set.
     for (int i = num_vals; i < 2 * MAX_BREAKPOINTS; ++i) {
         if ((i % 2) == 0)
             AMY_UNSET(e->breakpoint_times[which_bpset][i >> 1]);

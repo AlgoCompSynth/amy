@@ -346,6 +346,16 @@ def make_clipping_lut(filename):
         f.write("#endif\n")
     print("wrote", filename)
 
+
+def make_piano_patch():
+    import amy
+    # This just allocates the 20 oscs needed for a INTERP_PARTIALS patch
+    # dpwe wants to add a `num_suboscs` field to fix this behavior soon
+    amy.send(chorus=0) # Piano sounds weird with chorus on
+    amy.send(osc=0, wave=amy.INTERP_PARTIALS, patch=0)
+    amy.send(osc=20, wave=amy.PARTIAL)
+    return 21
+
 def make_patches(filename):
     def nothing(message):
         return
@@ -356,10 +366,9 @@ def make_patches(filename):
     amy.override_send = nothing
 
     with open(filename, "w") as f:
-        f.write("// Automatically generated.\n// DX7 and juno 106 patch table\n")
+        f.write("// Automatically generated.\n// DX7 and juno 106 and custom patch table\n")
         f.write("#ifndef __PATCHESH\n#define __PATCHESH\n")
-        f.write("static const char * const patch_commands[256] PROGMEM = {\n")
-        #f.write("const char * patch_commands[256] PROGMEM = {\n")
+        f.write("static const char * const patch_commands[257] PROGMEM = {\n")
         # Do juno
         for i in range(128):
             amy.log_patch()
@@ -374,8 +383,15 @@ def make_patches(filename):
             p.send_to_AMY(reset=False)
             f.write("\t/* %d: DX7 %s */ \"%s\",\n" % (i+128, p.name, amy.retrieve_patch()))  
             num_oscs.append(9)
+
+        # do piano
+        amy.log_patch()
+        num_osc_piano = make_piano_patch()
+        f.write("\t/* 256: dpwe piano */ \"%s\",\n" % (amy.retrieve_patch()))  
+        num_oscs.append(num_osc_piano)
+
         f.write("};\n")
-        f.write("const uint16_t patch_oscs[256] PROGMEM = {\n")
+        f.write("const uint16_t patch_oscs[257] PROGMEM = {\n")
         for i in num_oscs:
             f.write("%d," % (i))
         f.write("\n};\n#endif\n")
