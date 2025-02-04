@@ -3,8 +3,8 @@ import time
 BLOCK_SIZE = 256
 AMY_SAMPLE_RATE = 44100.0
 AMY_NCHANS = 2
-AMY_OSCS = 120
-MAX_QUEUE = 400
+AMY_OSCS = 180
+MAX_QUEUE = 2400
 SINE, PULSE, SAW_DOWN, SAW_UP, TRIANGLE, NOISE, KS, PCM, ALGO, PARTIAL, PARTIALS, BYO_PARTIALS, INTERP_PARTIALS, AUDIO_IN0, AUDIO_IN1, CUSTOM, OFF = range(17)
 FILTER_NONE, FILTER_LPF, FILTER_BPF, FILTER_HPF, FILTER_LPF24 = range(5)
 ENVELOPE_NORMAL, ENVELOPE_LINEAR, ENVELOPE_DX7, ENVELOPE_TRUE_EXPONENTIAL = range(4)
@@ -162,7 +162,7 @@ def message(**kwargs):
     # Each keyword maps to two chars, first is the wire protocol prefix, second is an arg type code
     # I=int, F=float, S=str, L=list, C=ctrl_coefs
     kw_map = {'osc': 'vI', 'wave': 'wI', 'note': 'nF', 'vel': 'lF', 'amp': 'aC', 'freq': 'fC', 'duty': 'dC', 'feedback': 'bF', 'time': 'tI',
-              'reset': 'SI', 'phase': 'PF', 'pan': 'QC', 'client': 'gI', 'volume': 'vF', 'pitch_bend': 'sF', 'filter_freq': 'FC', 'resonance': 'RF',
+              'reset': 'SI', 'phase': 'PF', 'pan': 'QC', 'client': 'gI', 'volume': 'VF', 'pitch_bend': 'sF', 'filter_freq': 'FC', 'resonance': 'RF',
               'bp0': 'AL', 'bp1': 'BL', 'eg0_type': 'TI', 'eg1_type': 'XI', 'debug': 'DI', 'chained_osc': 'cI', 'mod_source': 'LI', 
               'eq': 'xL', 'filter_type': 'GI', 'algorithm': 'oI', 'ratio': 'IF', 'latency_ms': 'NI', 'algo_source': 'OL', 'load_sample': 'zL',
               'chorus': 'kL', 'reverb': 'hL', 'echo': 'ML', 'load_patch': 'KI', 'store_patch': 'uS', 'voices': 'rL',

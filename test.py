@@ -123,6 +123,16 @@ class TestPcmShift(AmyTest):
     amy.send(time=500, note=70, vel=1)
 
 
+class TestPcmPatchChange(AmyTest):
+  """There was a bug where switching PCM patch would persist the base note of the preceding patch."""
+
+  def run(self):
+    amy.send(time=0, osc=0, wave=amy.PCM, patch=9)  # Clap
+    amy.send(time=100, vel=1)
+    amy.send(time=450, patch=11)  # Conga low
+    amy.send(time=500, vel=1)
+
+
 class TestPcmLoop(AmyTest):
 
   def run(self):
@@ -222,13 +232,31 @@ class TestInterpPartials(AmyTest):
     num_partials = 20
     amy.send(time=0, osc=base_osc, wave=amy.INTERP_PARTIALS, patch=0)
     for i in range(1, num_partials + 1):
-      # Set up each partial as the corresponding harmonic of the base_freq, with an amplitude of 1/N, 50ms attack, and a decay of 1 sec / N
       amy.send(osc=base_osc + i, wave=amy.PARTIAL)
     amy.send(time=50, osc=0, note=60, vel=0.1)
     amy.send(time=300, osc=0, note=67, vel=0.6)
     amy.send(time=550, osc=0, note=72, vel=1)
     amy.send(time=800, osc=0, vel=0)
     
+class TestInterpPartialsRetrigger(AmyTest):
+
+  def run(self):
+    # PARTIALS but each partial is interpolated from a table of pre-analyzed harmonic-sets.
+    base_osc = 0
+    num_partials = 20
+    amy.send(time=0, osc=base_osc, wave=amy.INTERP_PARTIALS, patch=0)
+    for i in range(1, num_partials + 1):
+      amy.send(osc=base_osc + i, wave=amy.PARTIAL)
+    amy.send(time=50, osc=0, note=52, vel=0.7)
+    amy.send(time=200, osc=0, note=52, vel=0.8)
+    amy.send(time=350, osc=0, note=52, vel=0.9)
+    amy.send(time=500, osc=0, vel=0)
+    amy.send(time=510, osc=100, wave=amy.SINE, bp0='3,1,500,0,50,0')
+    amy.send(time=550, osc=100, note=76, vel=1)
+    amy.send(time=700, osc=100, note=76, vel=1)
+    amy.send(time=850, osc=100, vel=0)
+
+
 class TestSineEnv(AmyTest):
 
   def run(self):
@@ -236,6 +264,19 @@ class TestSineEnv(AmyTest):
     amy.send(time=0, osc=0, amp='0,0,0.85,1,0,0', bp0='50,1,200,0.1,50,0')
     amy.send(time=100, vel=1)
     amy.send(time=500, vel=0)
+
+
+class TestSineEnv2(AmyTest):
+
+  def run(self):
+    amy.send(time=0, osc=0, wave=amy.SINE, freq=1000)
+    amy.send(time=0, osc=0, amp='0,0,1,1,0,0', bp0='0,0,200,5,200,00,0')
+    amy.send(time=100, vel=1)
+    amy.send(time=500, vel=0)
+    # The DX7 algo is weird - attack is different from decay, esp outside of [0, 1].
+    amy.send(time=500, osc=0, eg0_type=amy.ENVELOPE_DX7)
+    amy.send(time=550, vel=1)
+    amy.send(time=950, vel=0)
 
 
 class TestAlgo(AmyTest):
@@ -475,7 +516,8 @@ class TestOscBD(AmyTest):
   def run(self):
     # Uses a 0.25Hz sine wave at 0.5 phase (going down) to modify frequency of another sine wave
     amy.send(time=0, osc=1, wave=amy.SINE, amp=1, freq=0.25, phase=0.5)
-    amy.send(time=0, osc=0, wave=amy.SINE, bp0="0,1,500,0,0,0", freq="261.63,1,0,0,0,2", mod_source=1)
+    # Sine waveform always starts at phase 0 after retrigger.
+    amy.send(time=0, osc=0, wave=amy.SINE, phase=0, bp0="0,1,500,0,0,0", freq="261.63,1,0,0,0,2", mod_source=1)
     amy.send(time=100, osc=0, note=84, vel=1)
     amy.send(time=350, osc=0, note=84, vel=1)
     amy.send(time=600, osc=0, note=84, vel=1)

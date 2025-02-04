@@ -620,7 +620,7 @@ void reset_osc(uint16_t i ) {
     synth[i].feedback = F2S(0); //.996; todo ks feedback is v different from fm feedback
     msynth[i].feedback = F2S(0); //.996; todo ks feedback is v different from fm feedback
     synth[i].phase = F2P(0);
-    synth[i].trigger_phase = F2P(0);
+    AMY_UNSET(synth[i].trigger_phase);
     synth[i].volume = 0;
     synth[i].eq_l = 0;
     synth[i].eq_m = 0;
@@ -927,7 +927,7 @@ void play_event(struct delta d) {
             sine_note_on(d.osc, freq_of_logfreq(synth[d.osc].logfreq_coefs[COEF_CONST]));
         }
     }
-    if(d.param == PHASE) { synth[d.osc].phase = *(PHASOR *)&d.data;  synth[d.osc].trigger_phase = *(PHASOR*)&d.data; } // PHASOR
+    if(d.param == PHASE) synth[d.osc].trigger_phase = *(PHASOR*)&d.data;  // PHASOR.  Only trigger_phase is set, current phase untouched.
     // For now, if the wave type is BYO_PARTIALS, negate the patch number (which is also num_partials) and treat like regular PARTIALS - partials_note_on knows what to do.
     if(d.param == PATCH) synth[d.osc].patch = ((synth[d.osc].wave == BYO_PARTIALS) ? -1 : 1) * *(uint16_t *)&d.data;
     if(d.param == FEEDBACK) synth[d.osc].feedback = *(float *)&d.data;
@@ -1011,13 +1011,23 @@ void play_event(struct delta d) {
 
     if(d.param == PORTAMENTO) synth[d.osc].portamento_alpha = portamento_ms_to_alpha(*(uint16_t *)&d.data);
 
-    if(d.param == ALGORITHM) synth[d.osc].algorithm = *(uint8_t *)&d.data;
+    if(d.param == ALGORITHM) {
+        synth[d.osc].algorithm = *(uint8_t *)&d.data;
+        // This is a DX7-style control osc; ensure eg_types are set
+        // but only when ALGO is specified, so user can override later if desired.
+        synth[d.osc].eg_type[0] = ENVELOPE_DX7;
+        synth[d.osc].eg_type[1] = ENVELOPE_TRUE_EXPONENTIAL;
+    }
 
     if(d.param >= ALGO_SOURCE_START && d.param < ALGO_SOURCE_END) {
         uint16_t which_source = d.param - ALGO_SOURCE_START;
         synth[d.osc].algo_source[which_source] = d.data;
-        if(AMY_IS_SET(synth[d.osc].algo_source[which_source]))
-            synth[synth[d.osc].algo_source[which_source]].status = SYNTH_IS_ALGO_SOURCE;
+        if(AMY_IS_SET(synth[d.osc].algo_source[which_source])) {
+            int osc = synth[d.osc].algo_source[which_source];
+            synth[osc].status = SYNTH_IS_ALGO_SOURCE;
+            // Configure the amp envelope appropriately, just once when named as an algo_source.
+            synth[osc].eg_type[0] = ENVELOPE_DX7;
+        }
     }
 
     if (d.param == EG0_TYPE) synth[d.osc].eg_type[0] = d.data;
@@ -1045,9 +1055,11 @@ void play_event(struct delta d) {
 
             // if there was a filter active for this voice, reset it
             if(synth[d.osc].filter_type != FILTER_NONE) reset_filter(d.osc);
-            // For repeatability, start at zero phase.
-            synth[d.osc].phase = 0;
-                
+            // We no longer reset the phase here; instead, we reset phase when an oscillator falls silent.
+            // But if a trigger_phase is set, use that.
+            if (AMY_IS_SET(synth[d.osc].trigger_phase))
+                synth[d.osc].phase = synth[d.osc].trigger_phase;
+
             // restart the waveforms
             // Guess at the initial frequency depending only on const & note.  Envelopes not "developed" yet.
             float initial_logfreq = synth[d.osc].logfreq_coefs[COEF_CONST];
@@ -1066,7 +1078,8 @@ void play_event(struct delta d) {
             osc_note_on(d.osc, initial_freq);
             // trigger the mod source, if we have one
             if(AMY_IS_SET(synth[d.osc].mod_source)) {
-                synth[synth[d.osc].mod_source].phase = synth[synth[d.osc].mod_source].trigger_phase;
+                if (AMY_IS_SET(synth[synth[d.osc].mod_source].trigger_phase))
+                    synth[synth[d.osc].mod_source].phase = synth[synth[d.osc].mod_source].trigger_phase;
 
                 synth[synth[d.osc].mod_source].note_on_clock = total_samples;  // Need a note_on_clock to have envelope work correctly.
                 if(synth[synth[d.osc].mod_source].wave==SINE) sine_mod_trigger(synth[d.osc].mod_source);
@@ -1306,7 +1319,10 @@ SAMPLE render_osc_wave(uint16_t osc, uint8_t core, SAMPLE* buf) {
             } else {
                 if ( (total_samples - synth[osc].zero_amp_clock) >= MIN_ZERO_AMP_TIME_SAMPS) {
                     //printf("h&m: time %f osc %d OFF\n", total_samples/(float)AMY_SAMPLE_RATE, osc);
+                    // Oscillator has fallen silent, stop executing it.
                     synth[osc].status = SYNTH_AUDIBLE_SUSPENDED;  // It *could* come back...
+                    // .. but force it to start at zero phase next time.
+                    synth[osc].phase = 0;
                 }
             }
         } else if (max_val == 0) {
@@ -1926,6 +1942,8 @@ struct event amy_parse_message(char * message) {
 
 void amy_reset_sysclock() {
     total_samples = 0;
+    sequencer_tick_count = 0;
+    sequencer_recompute();
 }
 
 // given a string play / schedule the event directly
